@@ -81,13 +81,27 @@ const tags = [
   },
 ];
 
-const taxonomy = [
-  ["用户基础标签", "账号属性、渠道来源、注册信息", 42, ["账号属性", "渠道来源", "注册信息"], "普通"],
-  ["用户行为标签", "访问、创作、互动、导出", 58, ["访问行为", "创作行为", "互动行为"], "普通"],
-  ["用户偏好标签", "风格、模型、内容偏好", 14, ["风格偏好", "模型偏好", "内容偏好"], "普通"],
-  ["用户风险标签", "设备、异常、合规风险", 9, ["设备风险", "异常行为", "合规风险"], "高敏"],
-  ["用户价值标签", "收入、消耗、潜力价值", 16, ["收入贡献", "算力消耗", "潜力分层"], "中敏"],
-  ["用户会员标签", "会员、续费、算力购买", 11, ["会员状态", "续费风险", "购买记录"], "中敏"],
+const categoryAssets = [
+  { category: "用户基础标签", subCategory: "账号属性", count: 9, online: 9, sensitive: 2, monitorRate: 78, issue: 2 },
+  { category: "用户基础标签", subCategory: "渠道来源", count: 16, online: 14, sensitive: 1, monitorRate: 63, issue: 4 },
+  { category: "用户基础标签", subCategory: "地域语言", count: 5, online: 5, sensitive: 0, monitorRate: 82, issue: 0 },
+  { category: "用户行为标签", subCategory: "登录访问行为", count: 16, online: 16, sensitive: 0, monitorRate: 88, issue: 1 },
+  { category: "用户行为标签", subCategory: "创作行为", count: 10, online: 10, sensitive: 0, monitorRate: 92, issue: 0 },
+  { category: "用户行为标签", subCategory: "导出发布行为", count: 7, online: 6, sensitive: 1, monitorRate: 71, issue: 2 },
+  { category: "用户会员标签", subCategory: "会员状态", count: 6, online: 6, sensitive: 6, monitorRate: 83, issue: 1 },
+  { category: "用户会员标签", subCategory: "付费行为", count: 30, online: 28, sensitive: 30, monitorRate: 67, issue: 5 },
+  { category: "用户价值标签", subCategory: "收入贡献", count: 16, online: 13, sensitive: 14, monitorRate: 69, issue: 4 },
+  { category: "用户风险标签", subCategory: "设备风险", count: 4, online: 4, sensitive: 4, monitorRate: 50, issue: 3 },
+  { category: "用户偏好标签", subCategory: "风格偏好", count: 6, online: 4, sensitive: 0, monitorRate: 42, issue: 3 },
+  { category: "用户偏好标签", subCategory: "模型偏好", count: 5, online: 4, sensitive: 0, monitorRate: 44, issue: 2 },
+];
+
+const distributionGroups = [
+  { title: "产品分布", rows: [["Lovart", 108], ["LibTV", 42]] },
+  { title: "区域分布", rows: [["海外", 132], ["国内", 18]] },
+  { title: "状态分布", rows: [["已上线", 126], ["待治理", 24]] },
+  { title: "敏感等级", rows: [["普通", 102], ["中敏", 35], ["高敏", 13]] },
+  { title: "值类型", rows: [["string", 89], ["number", 42], ["array", 19]] },
 ];
 
 const viewTitles = {
@@ -204,22 +218,98 @@ function renderTagDetail(tag) {
   `;
 }
 
+function jumpToCatalog(filterText = "") {
+  switchView("catalog");
+  const keywordInput = $(".catalog-filter input");
+  if (keywordInput) keywordInput.value = filterText;
+}
+
 function renderTaxonomy() {
-  $("#taxonomyMap").innerHTML = taxonomy
-    .map(
-      ([name, desc, count, children, sensitivity]) => `
-        <div class="taxonomy-card" data-jump="catalog">
-          <div class="taxonomy-card-head">
-            <strong>${escapeHtml(name)}</strong>
-            <b>${count}</b>
-          </div>
-          <span>${escapeHtml(desc)}</span>
-          <p>${children.map((item) => `<em>${escapeHtml(item)}</em>`).join("")}</p>
-          <small>${escapeHtml(sensitivity)} · 点击进入目录筛选</small>
+  const keyword = ($("#mapLocator")?.value || "").trim().toLowerCase();
+  const assets = categoryAssets.filter((item) => {
+    if (!keyword) return true;
+    return `${item.category} ${item.subCategory}`.toLowerCase().includes(keyword);
+  });
+
+  $("#taxonomyMap").innerHTML = assets.length
+    ? assets
+        .map(
+          (item) => `
+            <button class="taxonomy-card" data-filter="${escapeHtml(item.subCategory)}">
+              <div class="taxonomy-card-head">
+                <div>
+                  <span>${escapeHtml(item.category)}</span>
+                  <strong>${escapeHtml(item.subCategory)}</strong>
+                </div>
+                <b>${item.count}</b>
+              </div>
+              <dl class="asset-metrics">
+                <div><dt>已上线</dt><dd>${item.online}</dd></div>
+                <div><dt>敏感</dt><dd>${item.sensitive}</dd></div>
+                <div><dt>监控</dt><dd>${item.monitorRate}%</dd></div>
+              </dl>
+              <p class="monitor-meter"><i style="width:${item.monitorRate}%"></i></p>
+              <small class="${item.issue ? "warning" : "success"}">${item.issue ? `${item.issue} 个治理风险` : "暂无明显风险"} · 点击进入目录</small>
+            </button>
+          `,
+        )
+        .join("")
+    : `<div class="empty-map-state"><strong>没有匹配的二级分类</strong><span>清空定位条件后查看全部标签资产。</span></div>`;
+
+  $$("[data-filter]").forEach((button) => {
+    button.addEventListener("click", () => jumpToCatalog(button.dataset.filter));
+  });
+}
+
+function renderMapDistributions() {
+  $("#mapDistributions").innerHTML = distributionGroups
+    .map((group) => {
+      const max = Math.max(...group.rows.map((row) => row[1]));
+      return `
+        <div>
+          <strong>${escapeHtml(group.title)}</strong>
+          ${group.rows
+            .map(
+              ([name, count]) => `
+                <button data-distribution="${escapeHtml(name)}">
+                  <span>${escapeHtml(name)}</span>
+                  <em style="width:${(count / max) * 100}%"></em>
+                  <b>${count}</b>
+                </button>
+              `,
+            )
+            .join("")}
         </div>
+      `;
+    })
+    .join("");
+
+  $$("[data-distribution]").forEach((button) => {
+    button.addEventListener("click", () => jumpToCatalog(button.dataset.distribution));
+  });
+}
+
+function renderMapInsights() {
+  const insights = [
+    ["风险", "付费行为高敏占比过高", "付费行为 30 个标签全部为中高敏，目录侧需要明确导出审批和授权范围。", "high", "付费行为"],
+    ["监控", "设备风险监控覆盖不足", "设备风险仅 50% 标签有监控，优先补覆盖率、空值率和任务失败告警。", "high", "设备风险"],
+    ["治理", "渠道来源存在非上线标签", "渠道来源 16 个标签中 2 个未上线，使用前需要确认口径和枚举说明。", "medium", "渠道来源"],
+    ["结构", "偏好类资产仍然偏薄", "风格偏好和模型偏好合计 11 个标签，后续运营分析可能不够用。", "low", "偏好"],
+  ];
+  $("#mapInsights").innerHTML = insights
+    .map(
+      ([type, title, detail, level, filter]) => `
+        <button class="insight-card ${level}" data-insight="${escapeHtml(filter)}">
+          <b>${escapeHtml(type)}</b>
+          <strong>${escapeHtml(title)}</strong>
+          <span>${escapeHtml(detail)}</span>
+        </button>
       `,
     )
     .join("");
+  $$("[data-insight]").forEach((button) => {
+    button.addEventListener("click", () => jumpToCatalog(button.dataset.insight));
+  });
 }
 
 function switchView(viewId) {
@@ -257,13 +347,21 @@ function setupSearch() {
   });
 }
 
+function setupMapLocator() {
+  $("#mapLocator")?.addEventListener("input", renderTaxonomy);
+  $("#mapCatalogSearch")?.addEventListener("click", () => jumpToCatalog($("#mapLocator").value.trim()));
+}
+
 function boot() {
   renderBars();
   renderTags();
   renderTaxonomy();
+  renderMapDistributions();
+  renderMapInsights();
   setupNavigation();
   setupTheme();
   setupSearch();
+  setupMapLocator();
   const initialView = new URLSearchParams(window.location.search).get("view");
   if (viewTitles[initialView]) switchView(initialView);
 }

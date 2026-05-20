@@ -286,10 +286,14 @@
             <article class="panel tag-system-panel">
               <div class="panel-title strong">
                 <div>
-                  <h3>画像标签体系</h3>
-                  <span>按一级分类、二级分类理解标签资产边界</span>
+                  <h3>二级分类资产概览</h3>
+                  <span>一级分类只做分组，重点看二级分类的资产、风险和监控覆盖</span>
                 </div>
                 <button class="secondary-action" data-jump="catalog">查看目录</button>
+              </div>
+              <div class="map-locator">
+                <input id="mapLocator" placeholder="定位二级分类、产品、区域或状态" />
+                <button class="secondary-action" id="mapCatalogSearch" type="button">去目录筛选</button>
               </div>
               <div class="taxonomy-map" id="taxonomyMap"></div>
             </article>
@@ -298,36 +302,17 @@
               <article class="panel">
                 <div class="panel-title strong">
                   <h3>资产分布</h3>
-                  <span>点击后进入目录筛选</span>
+                  <span>覆盖产品、区域、状态、敏感和值类型</span>
                 </div>
-                <div class="map-distribution">
-                  <div>
-                    <strong>产品分布</strong>
-                    <button data-jump="catalog"><span>Lovart</span><em style="width: 72%"></em><b>108</b></button>
-                    <button data-jump="catalog"><span>LibTV</span><em style="width: 28%"></em><b>42</b></button>
-                  </div>
-                  <div>
-                    <strong>状态分布</strong>
-                    <button data-jump="catalog"><span>已上线</span><em style="width: 84%"></em><b>126</b></button>
-                    <button data-jump="catalog"><span>待治理</span><em style="width: 16%"></em><b>24</b></button>
-                  </div>
-                  <div>
-                    <strong>敏感等级</strong>
-                    <button data-jump="catalog"><span>普通</span><em style="width: 68%"></em><b>102</b></button>
-                    <button data-jump="catalog"><span>中高敏</span><em style="width: 32%"></em><b>48</b></button>
-                  </div>
-                </div>
+                <div class="map-distribution" id="mapDistributions"></div>
               </article>
 
               <article class="panel">
                 <div class="panel-title strong">
-                  <h3>体系洞察</h3>
+                  <h3>治理提示</h3>
+                  <span>仅展示元数据规则能解释的结论</span>
                 </div>
-                <div class="map-insights">
-                  <div><b>缺口</b><strong>偏好标签覆盖不足</strong><span>风格、模型、内容偏好仅 14 个，建议补齐运营常用维度。</span></div>
-                  <div><b>风险</b><strong>风险类标签需集中授权</strong><span>设备、异常、支付相关标签默认纳入中高敏权限。</span></div>
-                  <div><b>治理</b><strong>24 个标签待补口径</strong><span>点击分类可进入目录查看负责人和治理状态。</span></div>
-                </div>
+                <div class="map-insights" id="mapInsights"></div>
               </article>
             </aside>
           </div>
