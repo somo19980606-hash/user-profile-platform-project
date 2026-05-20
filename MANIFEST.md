@@ -5,6 +5,7 @@
 - `phase1-prd.md`：用户画像平台一期 PRD
 - `data-inventory.md`：画像平台一期数据盘点
 - `technical-design.md`：用户画像平台一期技术设计
+- `feishu/`：飞书 Wiki 上游文档同步快照和来源索引
 
 ## prototype
 

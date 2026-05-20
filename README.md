@@ -37,3 +37,11 @@ http://localhost:8899/?view=catalog
 ## 当前阶段
 
 当前项目仍处于一期 PRD 和高保真原型确认阶段，尚未进入正式工程化开发。后续建议先确认页面信息架构和业务流程，再基于 `mvp/` 或新建前后端工程继续开发。
+
+## 飞书文档同步
+
+项目文档以上游飞书 Wiki 为准时，本地同步快照放在 `docs/feishu/`。当前已登记：
+
+- `画像体系-平台`：`https://resonate.feishu.cn/wiki/JKa2wGcA4imuMDkM4jScoZXwnNc`
+
+同步时先读取飞书文档的 `revision_id` 和内容，再和 `docs/feishu/sources.json` 及本地 Markdown 快照对比；只有上游变化时才更新本地文件。
