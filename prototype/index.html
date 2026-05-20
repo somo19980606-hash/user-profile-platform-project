@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>用户画像平台高保真原型</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-view="overview">
+    <header class="global-header">
+      <div class="global-left">
+        <div class="product-logo">
+          <img class="profile-mark" src="./profile-logo.png" alt="Profile Studio" />
+          <div>
+            <strong>Profile Studio</strong>
+          </div>
+        </div>
+      </div>
+      <div class="global-right">
+        <button id="themeToggle" class="theme-switch" type="button" aria-label="切换主题">☾</button>
+        <button class="notice-button" type="button" aria-label="通知">
+          <span>◔</span>
+          <i>4</i>
+        </button>
+        <button class="user-menu" type="button">
+          <span>宋</span>
+          <strong>宋伟龙</strong>
+        </button>
+      </div>
+    </header>
+
+    <svg class="icon-sprite" aria-hidden="true">
+      <symbol id="icon-home" viewBox="0 0 24 24">
+        <path d="M4.5 11.5 12 5l7.5 6.5" />
+        <path d="M6.5 10.5v8h11v-8" />
+        <path d="M10 18.5v-5h4v5" />
+      </symbol>
+      <symbol id="icon-catalog" viewBox="0 0 24 24">
+        <path d="M5 6.5h14" />
+        <path d="M5 12h14" />
+        <path d="M5 17.5h9" />
+        <path d="M17 16l2 2 3-4" />
+      </symbol>
+      <symbol id="icon-tagmap" viewBox="0 0 24 24">
+        <circle cx="7" cy="8" r="2.2" />
+        <circle cx="17" cy="7" r="2.2" />
+        <circle cx="12" cy="17" r="2.2" />
+        <path d="m9 8 6-.6" />
+        <path d="m8.2 10 2.7 5.1" />
+        <path d="m15.7 9 2.3 5.9" />
+      </symbol>
+      <symbol id="icon-audience" viewBox="0 0 24 24">
+        <circle cx="9" cy="8" r="2.6" />
+        <circle cx="17" cy="9" r="2" />
+        <path d="M4.5 18c.7-3 2.4-4.4 5-4.4s4.3 1.4 5 4.4" />
+        <path d="M14.5 15c1.9.1 3.2 1.1 4 3" />
+      </symbol>
+      <symbol id="icon-export" viewBox="0 0 24 24">
+        <path d="M12 4.5v9" />
+        <path d="m8.5 10 3.5 3.5 3.5-3.5" />
+        <path d="M5.5 15.5v3h13v-3" />
+        <path d="m16.5 5.5 1.3 1.3 2.7-3" />
+      </symbol>
+      <symbol id="icon-quality" viewBox="0 0 24 24">
+        <path d="M4 14h3l2-6 3.5 10 2.3-7H20" />
+        <path d="M5 20h14" />
+      </symbol>
+      <symbol id="icon-request" viewBox="0 0 24 24">
+        <path d="M6 4.8h9l3 3v11.4H6z" />
+        <path d="M15 4.8V8h3" />
+        <path d="M8.8 13h6.4" />
+        <path d="M8.8 16h4.2" />
+      </symbol>
+      <symbol id="icon-audit" viewBox="0 0 24 24">
+        <path d="M12 4.5 18 7v5.2c0 3.6-2.2 6-6 7.3-3.8-1.3-6-3.7-6-7.3V7z" />
+        <path d="m9.5 12.4 1.7 1.7 3.4-4" />
+      </symbol>
+      <symbol id="icon-governance" viewBox="0 0 24 24">
+        <path d="M5 6.5h14" />
+        <path d="M7 6.5v11" />
+        <path d="M17 6.5v11" />
+        <path d="M9 10.5h6" />
+        <path d="M9 14h6" />
+      </symbol>
+      <symbol id="icon-dictionary" viewBox="0 0 24 24">
+        <path d="M6 5.5h9.5A2.5 2.5 0 0 1 18 8v10.5H8A2 2 0 0 1 6 16.5z" />
+        <path d="M8.5 9h6" />
+        <path d="M8.5 12h4" />
+      </symbol>
+      <symbol id="icon-permission" viewBox="0 0 24 24">
+        <circle cx="9" cy="9" r="3" />
+        <path d="M4.5 18c.7-2.6 2.2-3.8 4.5-3.8 1.8 0 3.1.8 3.9 2.4" />
+        <path d="M15 14.5h4.5v4H15z" />
+        <path d="M16 14.5v-1.2a1.3 1.3 0 0 1 2.6 0v1.2" />
+      </symbol>
+      <symbol id="icon-sync" viewBox="0 0 24 24">
+        <path d="M17.8 8.2A6.8 6.8 0 0 0 6 9" />
+        <path d="M17.5 4.8v3.8h-3.8" />
+        <path d="M6.2 15.8A6.8 6.8 0 0 0 18 15" />
+        <path d="M6.5 19.2v-3.8h3.8" />
+      </symbol>
+      <symbol id="icon-star" viewBox="0 0 24 24">
+        <path d="m12 4.8 2.2 4.4 4.8.7-3.5 3.4.8 4.8-4.3-2.3-4.3 2.3.8-4.8L5 9.9l4.8-.7z" />
+      </symbol>
+      <symbol id="icon-created" viewBox="0 0 24 24">
+        <path d="M5.5 18.5h13" />
+        <path d="M7 15.5 16.8 5.7l2 2-9.8 9.8-3 .8z" />
+      </symbol>
+      <symbol id="icon-approved" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="7.2" />
+        <path d="m8.7 12.3 2.2 2.2 4.6-5.1" />
+      </symbol>
+      <symbol id="icon-owner" viewBox="0 0 24 24">
+        <circle cx="12" cy="8.2" r="3" />
+        <path d="M6.5 18.5c.8-3.2 2.6-4.8 5.5-4.8s4.7 1.6 5.5 4.8" />
+        <path d="M18 5.5v4" />
+        <path d="M20 7.5h-4" />
+      </symbol>
+    </svg>
+
+    <div class="app-shell">
+      <aside class="side-nav">
+        <div class="side-title">画像平台</div>
+        <nav class="nav">
+          <button class="nav-item active" data-view="overview"><span class="nav-icon"><svg viewBox="0 0 24 24" focusable="false"><use href="#icon-home"></use></svg></span>首页</button>
+          <button class="nav-item" data-view="tagmap"><span class="nav-icon"><svg viewBox="0 0 24 24" focusable="false"><use href="#icon-tagmap"></use></svg></span>标签地图</button>
+          <button class="nav-item" data-view="catalog"><span class="nav-icon"><svg viewBox="0 0 24 24" focusable="false"><use href="#icon-catalog"></use></svg></span>标签目录</button>
+          <button class="nav-item" data-view="audience"><span class="nav-icon"><svg viewBox="0 0 24 24" focusable="false"><use href="#icon-audience"></use></svg></span>人群圈选</button>
+          <button class="nav-item" data-view="exports"><span class="nav-icon"><svg viewBox="0 0 24 24" focusable="false"><use href="#icon-export"></use></svg></span>导出审批</button>
+          <button class="nav-item" data-view="quality"><span class="nav-icon"><svg viewBox="0 0 24 24" focusable="false"><use href="#icon-quality"></use></svg></span>质量监控</button>
+          <button class="nav-item" data-view="requirements"><span class="nav-icon"><svg viewBox="0 0 24 24" focusable="false"><use href="#icon-request"></use></svg></span>需求看板</button>
+          <button class="nav-item" data-view="audit"><span class="nav-icon"><svg viewBox="0 0 24 24" focusable="false"><use href="#icon-audit"></use></svg></span>审计中心</button>
+        </nav>
+
+        <div class="side-group">
+          <button><span class="nav-icon"><svg viewBox="0 0 24 24" focusable="false"><use href="#icon-governance"></use></svg></span>标签治理</button>
+          <button><span class="nav-icon"><svg viewBox="0 0 24 24" focusable="false"><use href="#icon-dictionary"></use></svg></span>值域字典</button>
+          <button><span class="nav-icon"><svg viewBox="0 0 24 24" focusable="false"><use href="#icon-permission"></use></svg></span>权限授权</button>
+          <button><span class="nav-icon"><svg viewBox="0 0 24 24" focusable="false"><use href="#icon-sync"></use></svg></span>同步日志</button>
+        </div>
+        <div class="side-group">
+          <button><span class="nav-icon"><svg viewBox="0 0 24 24" focusable="false"><use href="#icon-star"></use></svg></span>我收藏的</button>
+          <button><span class="nav-icon"><svg viewBox="0 0 24 24" focusable="false"><use href="#icon-created"></use></svg></span>我创建的</button>
+          <button><span class="nav-icon"><svg viewBox="0 0 24 24" focusable="false"><use href="#icon-approved"></use></svg></span>我审批的</button>
+          <button><span class="nav-icon"><svg viewBox="0 0 24 24" focusable="false"><use href="#icon-owner"></use></svg></span>我负责的</button>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <section class="map-hero">
+          <div class="hero-ornament"></div>
+          <span class="eyebrow">User Profile Platform</span>
+          <h1 id="viewTitle">用户画像平台</h1>
+          <div class="hero-search">
+            <input id="globalSearch" placeholder="请输入关键字进行全局搜索，如：高价值用户、会员、生成媒体数" />
+            <button>精准搜索</button>
+            <button class="primary">搜索</button>
+          </div>
+        </section>
+
+        <section class="asset-strip">
+          <article>
+            <div class="asset-icon"><svg viewBox="0 0 24 24"><use href="#icon-catalog"></use></svg></div>
+            <div><strong>标签资产</strong><span>上线 126 · 总数 150</span></div>
+            <a>明细</a>
+          </article>
+          <article>
+            <div class="asset-icon"><svg viewBox="0 0 24 24"><use href="#icon-tagmap"></use></svg></div>
+            <div><strong>标签分类</strong><span>一级 8 · 二级 32</span></div>
+            <a>明细</a>
+          </article>
+          <article>
+            <div class="asset-icon"><svg viewBox="0 0 24 24"><use href="#icon-audience"></use></svg></div>
+            <div><strong>人群包</strong><span>有效 18 · 草稿 3</span></div>
+            <a>明细</a>
+          </article>
+          <article>
+            <div class="asset-icon"><svg viewBox="0 0 24 24"><use href="#icon-export"></use></svg></div>
+            <div><strong>导出任务</strong><span>审批中 4 · 完成 21</span></div>
+            <a>明细</a>
+          </article>
+          <article>
+            <div class="asset-icon"><svg viewBox="0 0 24 24"><use href="#icon-quality"></use></svg></div>
+            <div><strong>质量监控</strong><span>异常 12 · 监控 119</span></div>
+            <a>明细</a>
+          </article>
+          <article>
+            <div class="asset-icon"><svg viewBox="0 0 24 24"><use href="#icon-request"></use></svg></div>
+            <div><strong>标签需求</strong><span>待处理 6 · 新增 14</span></div>
+            <a>明细</a>
+          </article>
+        </section>
+
+        <section id="overview" class="view active">
+          <div class="portal-grid">
+            <article class="panel nav-panel">
+              <div class="panel-title">
+                <h3>画像导航</h3>
+              </div>
+              <div class="directory-list">
+                <button><span class="mini-icon"><svg viewBox="0 0 24 24"><use href="#icon-catalog"></use></svg></span> 全部标签 (150)<i>›</i></button>
+                <button><span class="mini-icon"><svg viewBox="0 0 24 24"><use href="#icon-owner"></use></svg></span> 用户基础标签 (42)<i>›</i></button>
+                <button><span class="mini-icon"><svg viewBox="0 0 24 24"><use href="#icon-tagmap"></use></svg></span> 用户行为标签 (58)<i>›</i></button>
+                <button><span class="mini-icon"><svg viewBox="0 0 24 24"><use href="#icon-approved"></use></svg></span> 用户会员标签 (11)<i>›</i></button>
+                <button><span class="mini-icon"><svg viewBox="0 0 24 24"><use href="#icon-quality"></use></svg></span> 用户价值标签 (16)<i>›</i></button>
+                <button><span class="mini-icon"><svg viewBox="0 0 24 24"><use href="#icon-audit"></use></svg></span> 用户风险标签 (9)<i>›</i></button>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-title">
+                <h3>热门搜索的标签</h3>
+                <span>?</span>
+              </div>
+              <div class="asset-list">
+                <button><strong>user_generate_media_cnt</strong><span>用户生成媒体数</span></button>
+                <button><strong>user_is_vip</strong><span>是否在期会员</span></button>
+                <button><strong>user_pay_amount</strong><span>历史支付金额</span></button>
+                <button><strong>user_lifecycle_stage</strong><span>用户生命周期阶段</span></button>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-title">
+                <h3>近期查看的人群</h3>
+                <span>?</span>
+              </div>
+              <div class="asset-list quiet">
+                <button><strong>高活跃会员召回</strong><span>24,318 人 · 可导出</span></button>
+                <button><strong>沉默创作用户</strong><span>18,420 人 · 待验收</span></button>
+                <button><strong>付费潜力用户</strong><span>51,902 人 · 需审批</span></button>
+                <button><strong>导出高意向用户</strong><span>9,746 人 · 本周更新</span></button>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-title">
+                <h3>我的关注</h3>
+                <a>更多</a>
+              </div>
+              <div class="asset-list starred">
+                <button><strong>会员续费风险标签</strong><span>口径确认中</span></button>
+                <button><strong>导出任务 EXP-2401</strong><span>飞书审批中</span></button>
+                <button><strong>高敏标签权限复核</strong><span>3 个标签待处理</span></button>
+                <button><strong>本月标签需求</strong><span>14 个新增，6 个待处理</span></button>
+              </div>
+            </article>
+          </div>
+
+          <div class="lower-grid">
+            <article class="panel">
+              <div class="panel-title">
+                <h3>常用画像能力</h3>
+              </div>
+              <div class="read-grid">
+                <button class="capability-card"><span><svg viewBox="0 0 24 24"><use href="#icon-catalog"></use></svg></span><strong>标签目录检索</strong><small>按名称、编码、分类快速定位标签</small></button>
+                <button class="capability-card"><span><svg viewBox="0 0 24 24"><use href="#icon-tagmap"></use></svg></span><strong>标签地图导航</strong><small>按画像分类查看标签覆盖关系</small></button>
+                <button class="capability-card"><span><svg viewBox="0 0 24 24"><use href="#icon-audience"></use></svg></span><strong>人群条件预估</strong><small>组合标签条件，预估圈选规模</small></button>
+                <button class="capability-card"><span><svg viewBox="0 0 24 24"><use href="#icon-star"></use></svg></span><strong>人群包保存</strong><small>沉淀复用人群，保留规则版本</small></button>
+                <button class="capability-card"><span><svg viewBox="0 0 24 24"><use href="#icon-export"></use></svg></span><strong>导出审批追踪</strong><small>跟踪审批、导出、过期状态</small></button>
+                <button class="capability-card"><span><svg viewBox="0 0 24 24"><use href="#icon-quality"></use></svg></span><strong>质量异常治理</strong><small>发现缺失、波动和口径风险</small></button>
+              </div>
+            </article>
+            <article class="panel">
+              <div class="panel-title">
+                <h3>治理提醒</h3>
+              </div>
+              <div class="risk-stack">
+                <div class="risk-card high">
+                  <div><b>高</b><strong>3 个高敏标签待权限复核</strong></div>
+                  <span>邮箱、设备、支付字段需确认授权范围</span>
+                  <em><i style="width: 72%"></i></em>
+                </div>
+                <div class="risk-card medium">
+                  <div><b>中</b><strong>7 个标签缺少质量监控</strong></div>
+                  <span>上线前建议补齐覆盖率、波动和空值监控</span>
+                  <em><i style="width: 46%"></i></em>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="tagmap" class="view">
+          <div class="tagmap-layout">
+            <article class="panel tag-system-panel">
+              <div class="panel-title strong">
+                <div>
+                  <h3>画像标签体系</h3>
+                  <span>按一级分类、二级分类理解标签资产边界</span>
+                </div>
+                <button class="secondary-action" data-jump="catalog">查看目录</button>
+              </div>
+              <div class="taxonomy-map" id="taxonomyMap"></div>
+            </article>
+
+            <aside class="map-side">
+              <article class="panel">
+                <div class="panel-title strong">
+                  <h3>资产分布</h3>
+                  <span>点击后进入目录筛选</span>
+                </div>
+                <div class="map-distribution">
+                  <div>
+                    <strong>产品分布</strong>
+                    <button data-jump="catalog"><span>Lovart</span><em style="width: 72%"></em><b>108</b></button>
+                    <button data-jump="catalog"><span>LibTV</span><em style="width: 28%"></em><b>42</b></button>
+                  </div>
+                  <div>
+                    <strong>状态分布</strong>
+                    <button data-jump="catalog"><span>已上线</span><em style="width: 84%"></em><b>126</b></button>
+                    <button data-jump="catalog"><span>待治理</span><em style="width: 16%"></em><b>24</b></button>
+                  </div>
+                  <div>
+                    <strong>敏感等级</strong>
+                    <button data-jump="catalog"><span>普通</span><em style="width: 68%"></em><b>102</b></button>
+                    <button data-jump="catalog"><span>中高敏</span><em style="width: 32%"></em><b>48</b></button>
+                  </div>
+                </div>
+              </article>
+
+              <article class="panel">
+                <div class="panel-title strong">
+                  <h3>体系洞察</h3>
+                </div>
+                <div class="map-insights">
+                  <div><b>缺口</b><strong>偏好标签覆盖不足</strong><span>风格、模型、内容偏好仅 14 个，建议补齐运营常用维度。</span></div>
+                  <div><b>风险</b><strong>风险类标签需集中授权</strong><span>设备、异常、支付相关标签默认纳入中高敏权限。</span></div>
+                  <div><b>治理</b><strong>24 个标签待补口径</strong><span>点击分类可进入目录查看负责人和治理状态。</span></div>
+                </div>
+              </article>
+            </aside>
+          </div>
+        </section>
+
+        <section id="catalog" class="view">
+          <div class="catalog-workbench">
+            <aside class="panel catalog-filter">
+              <div class="panel-title strong">
+                <h3>筛选条件</h3>
+              </div>
+              <div class="filter-stack">
+                <label><span>关键词</span><input placeholder="名称 / 编码 / 来源表 / 字段" /></label>
+                <label><span>一级分类</span><select><option>全部分类</option><option>用户行为标签</option><option>用户会员标签</option><option>用户风险标签</option></select></label>
+                <label><span>产品 / 区域</span><select><option>全部产品区域</option><option>Lovart / 海外</option><option>LibTV / 海外</option></select></label>
+                <label><span>标签状态</span><select><option>全部状态</option><option>已上线</option><option>待治理</option></select></label>
+                <label><span>敏感等级</span><select><option>全部敏感等级</option><option>普通</option><option>中敏</option><option>高敏</option></select></label>
+                <button class="primary-action">应用筛选</button>
+              </div>
+            </aside>
+
+            <article class="panel table-panel">
+              <div class="panel-title strong catalog-title">
+                <div>
+                  <h3>标签资产目录</h3>
+                  <span>按 PRD 字段展示标签资产、口径状态、质量和权限信息</span>
+                </div>
+                <button class="primary-action">新增标签需求</button>
+              </div>
+              <div class="catalog-summary">
+                <span><b>150</b> 总标签</span>
+                <span><b>126</b> 已上线</span>
+                <span><b>48</b> 中高敏</span>
+                <span><b>24</b> 待治理</span>
+              </div>
+              <div class="catalog-list" id="tagRows"></div>
+            </article>
+
+            <aside class="panel detail-panel" id="tagDetail"></aside>
+          </div>
+        </section>
+
+        <section id="audience" class="view">
+          <div class="audience-layout">
+            <article class="panel">
+              <div class="panel-title strong">
+                <h3>人群圈选</h3>
+                <div class="segment"><button class="active">AND</button><button>OR</button></div>
+              </div>
+              <div class="rule-builder">
+                <div class="rule-row"><select><option>是否 VIP</option></select><select><option>等于</option></select><input value="是" /></div>
+                <div class="rule-row"><select><option>生成媒体数</option></select><select><option>大于等于</option></select><input value="10" /></div>
+                <div class="rule-row sensitive"><select><option>支付金额</option></select><select><option>大于</option></select><input value="100" /></div>
+                <button class="secondary-action">+ 添加条件</button>
+              </div>
+              <div class="audience-preview">
+                <span>预估命中用户</span>
+                <strong>24,318</strong>
+                <p>覆盖率 18.7%，包含 1 个中敏标签，导出需审批。</p>
+                <button class="primary-action">保存人群包</button>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-title strong"><h3>人群包</h3></div>
+              <div class="audience-list">
+                <div><strong>高活跃会员召回</strong><span class="pill success">可导出</span><p>24,318 人 · Lovart · 2026-05-14</p></div>
+                <div><strong>付费潜力用户</strong><span class="pill warning">需审批</span><p>51,902 人 · 含消费标签</p></div>
+                <div><strong>沉默创作用户</strong><span class="pill neutral">草稿</span><p>18,420 人 · 待确认口径</p></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="exports" class="view">
+          <div class="export-layout">
+            <article class="panel table-panel">
+              <div class="panel-title strong"><h3>导出审批任务</h3><button class="primary-action">提交导出申请</button></div>
+              <table>
+                <thead><tr><th>任务</th><th>人群包</th><th>审批</th><th>目标</th><th>有效期</th></tr></thead>
+                <tbody>
+                  <tr><td>EXP-2401</td><td>高活跃会员召回</td><td><span class="pill warning">飞书审批中</span></td><td>本地 CSV</td><td>7 天</td></tr>
+                  <tr><td>EXP-2398</td><td>沉默创作用户</td><td><span class="pill success">已完成</span></td><td>本地 CSV</td><td>已生成</td></tr>
+                  <tr><td>EXP-2391</td><td>付费潜力用户</td><td><span class="pill danger">已拒绝</span></td><td>本地 CSV</td><td>-</td></tr>
+                </tbody>
+              </table>
+            </article>
+            <article class="panel">
+              <div class="panel-title strong"><h3>审批链路</h3></div>
+              <div class="timeline">
+                <div class="done"><strong>提交导出申请</strong><span>用途：会员召回活动</span></div>
+                <div class="done"><strong>发起飞书审批</strong><span>实例：APPROVAL-9527</span></div>
+                <div class="current"><strong>等待审批人处理</strong><span>数据管理员 / 业务负责人</span></div>
+                <div><strong>审批通过后生成 CSV</strong><span>storage/exports/EXP-2401.csv</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="quality" class="view">
+          <div class="quality-layout">
+            <article class="panel">
+              <div class="panel-title strong"><h3>质量监控</h3></div>
+              <div class="quality-cards">
+                <div><strong>96.2%</strong><span>平均覆盖率</span></div>
+                <div><strong>3.8%</strong><span>平均空值率</span></div>
+                <div><strong>5</strong><span>任务异常</span></div>
+                <div><strong>7</strong><span>缺少监控</span></div>
+              </div>
+              <table>
+                <thead><tr><th>标签</th><th>覆盖率</th><th>空值率</th><th>任务</th><th>风险</th></tr></thead>
+                <tbody>
+                  <tr><td>生成媒体数</td><td>98.4%</td><td>1.2%</td><td>success</td><td><span class="pill success">低</span></td></tr>
+                  <tr><td>支付金额</td><td>62.1%</td><td>8.7%</td><td>success</td><td><span class="pill warning">中</span></td></tr>
+                  <tr><td>风险设备ID</td><td>35.0%</td><td>24.3%</td><td>failed</td><td><span class="pill danger">高</span></td></tr>
+                </tbody>
+              </table>
+            </article>
+          </div>
+        </section>
+
+        <section id="requirements" class="view">
+          <div class="kanban">
+            <div><h3>需求中</h3><article>沉默用户召回标签<span>运营</span></article></div>
+            <div><h3>口径确认中</h3><article>高价值会员分层<span>会员业务</span></article></div>
+            <div><h3>待开发</h3><article>创作偏好分类<span>产品</span></article></div>
+            <div><h3>待验收</h3><article>续费风险标签<span>数据侧</span></article></div>
+          </div>
+        </section>
+
+        <section id="audit" class="view">
+          <article class="panel table-panel">
+            <div class="panel-title strong"><h3>审计中心</h3></div>
+            <table>
+              <thead><tr><th>时间</th><th>操作人</th><th>动作</th><th>资产</th><th>风险</th></tr></thead>
+              <tbody>
+                <tr><td>20:52:18</td><td>songweilong</td><td>preview_audience</td><td>高活跃会员召回</td><td><span class="pill warning">中</span></td></tr>
+                <tr><td>20:51:44</td><td>songweilong</td><td>view_sensitive_tag</td><td>支付金额</td><td><span class="pill danger">高</span></td></tr>
+                <tr><td>20:49:01</td><td>fengjun</td><td>sync_metadata</td><td>profile_tag_metadata</td><td><span class="pill success">低</span></td></tr>
+              </tbody>
+            </table>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

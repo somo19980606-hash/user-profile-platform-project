@@ -1,0 +1,833 @@
+{
+  "dws_ad_uuid_user_profile_df_1d": [
+    {
+      "field": "uuid",
+      "type": "STRING",
+      "comment": "登录用户UUID"
+    },
+    {
+      "field": "user_id",
+      "type": "BIGINT",
+      "comment": "登录用户ID"
+    },
+    {
+      "field": "nickname",
+      "type": "STRING",
+      "comment": "昵称"
+    },
+    {
+      "field": "avatar",
+      "type": "STRING",
+      "comment": "头像"
+    },
+    {
+      "field": "status",
+      "type": "STRING",
+      "comment": "用户状态"
+    },
+    {
+      "field": "status_id",
+      "type": "BIGINT",
+      "comment": "用户状态ID"
+    },
+    {
+      "field": "first_bind_cid",
+      "type": "STRING",
+      "comment": "首次绑定CID"
+    },
+    {
+      "field": "first_access_pt",
+      "type": "STRING",
+      "comment": "首次访问日期"
+    },
+    {
+      "field": "last_record_cid",
+      "type": "STRING",
+      "comment": "最后一个访问日期使用的第一个CID"
+    },
+    {
+      "field": "last_access_pt",
+      "type": "STRING",
+      "comment": "最后访问日期"
+    },
+    {
+      "field": "active_pt_list",
+      "type": "ARRAY<STRING>",
+      "comment": "访问日期列表"
+    },
+    {
+      "field": "canvas_pt_list",
+      "type": "ARRAY<STRING>",
+      "comment": "画布使用日期列表"
+    },
+    {
+      "field": "agent_pt_list",
+      "type": "ARRAY<STRING>",
+      "comment": "Agent使用日期列表"
+    },
+    {
+      "field": "sd_pt_list",
+      "type": "ARRAY<STRING>",
+      "comment": "生图日期列表"
+    },
+    {
+      "field": "copy_pt_list",
+      "type": "ARRAY<STRING>",
+      "comment": "复制日期列表"
+    },
+    {
+      "field": "download_pt_list",
+      "type": "ARRAY<STRING>",
+      "comment": "下载日期列表"
+    },
+    {
+      "field": "collect_pt_list",
+      "type": "ARRAY<STRING>",
+      "comment": "收藏日期列表"
+    },
+    {
+      "field": "share_pt_list",
+      "type": "ARRAY<STRING>",
+      "comment": "分享日期列表"
+    },
+    {
+      "field": "like_pt_list",
+      "type": "ARRAY<STRING>",
+      "comment": "点赞日期列表"
+    },
+    {
+      "field": "hate_pt_list",
+      "type": "ARRAY<STRING>",
+      "comment": "点踩日期列表"
+    },
+    {
+      "field": "comment_pt_list",
+      "type": "ARRAY<STRING>",
+      "comment": "评论日期列表"
+    },
+    {
+      "field": "is_vip",
+      "type": "STRING",
+      "comment": "是否VIP"
+    },
+    {
+      "field": "vip_type",
+      "type": "STRING",
+      "comment": "VIP类型"
+    },
+    {
+      "field": "pay_pt_list",
+      "type": "ARRAY<STRING>",
+      "comment": "付费日期列表"
+    },
+    {
+      "field": "member_pay_pt_list",
+      "type": "ARRAY<STRING>",
+      "comment": "会员付费日期列表。不含充值"
+    },
+    {
+      "field": "recharge_pay_pt_list",
+      "type": "ARRAY<STRING>",
+      "comment": "充值付费日期列表。不含购买会员商品"
+    },
+    {
+      "field": "member_left_days",
+      "type": "BIGINT",
+      "comment": "会员剩余天数"
+    },
+    {
+      "field": "event_map",
+      "type": "MAP<STRING,BIGINT>",
+      "comment": "用户事件map"
+    },
+    {
+      "field": "event_count",
+      "type": "BIGINT",
+      "comment": "用户事件总数"
+    },
+    {
+      "field": "behave_pt_list",
+      "type": "ARRAY<STRING>",
+      "comment": "行为日期列表"
+    },
+    {
+      "field": "init_power_balance",
+      "type": "BIGINT",
+      "comment": "初始算力余额"
+    },
+    {
+      "field": "final_power_balance",
+      "type": "BIGINT",
+      "comment": "最终算力余额"
+    },
+    {
+      "field": "increase_power",
+      "type": "BIGINT",
+      "comment": "增加的算力点数"
+    },
+    {
+      "field": "decrease_power",
+      "type": "BIGINT",
+      "comment": "消耗的算力点数。包含团队版"
+    },
+    {
+      "field": "gift_power",
+      "type": "BIGINT",
+      "comment": "赠送的算力点数"
+    },
+    {
+      "field": "agent_consume_power",
+      "type": "BIGINT",
+      "comment": "Agent消耗的算力点数"
+    },
+    {
+      "field": "dialog_thread_cnt",
+      "type": "BIGINT",
+      "comment": "对话数"
+    },
+    {
+      "field": "pay_order_cnt",
+      "type": "BIGINT",
+      "comment": "支付订单数"
+    },
+    {
+      "field": "pay_amount",
+      "type": "DECIMAL(38,18)",
+      "comment": "支付金额"
+    },
+    {
+      "field": "jwl_apply_pt",
+      "type": "STRING",
+      "comment": "JWL申请日期"
+    },
+    {
+      "field": "jwl_give_pt",
+      "type": "STRING",
+      "comment": "JWL发放日期"
+    },
+    {
+      "field": "invite_code_verified_pt",
+      "type": "STRING",
+      "comment": "邀请码核销日期"
+    },
+    {
+      "field": "inviter_uuid",
+      "type": "STRING",
+      "comment": "邀请人UUID"
+    },
+    {
+      "field": "show_paywall",
+      "type": "STRING",
+      "comment": "是否显示付费墙"
+    },
+    {
+      "field": "initiative_show_paywall",
+      "type": "STRING",
+      "comment": "是否主动显示付费墙"
+    },
+    {
+      "field": "passive_show_paywall",
+      "type": "STRING",
+      "comment": "是否被动显示付费墙"
+    },
+    {
+      "field": "click2pay",
+      "type": "STRING",
+      "comment": "是否点击去付费"
+    },
+    {
+      "field": "is_sign_member",
+      "type": "STRING",
+      "comment": "是否签约会员。仅对在期会员生效"
+    },
+    {
+      "field": "member_trade_biz_id",
+      "type": "STRING",
+      "comment": "会员订单流水ID"
+    },
+    {
+      "field": "member_contract_sign_biz_id",
+      "type": "STRING",
+      "comment": "会员签约单流水ID。仅对在期签约会员有效"
+    },
+    {
+      "field": "member_contract_sign_pt",
+      "type": "STRING",
+      "comment": "会员签约日期。最新的会员签约日期。仅对在期签约会员有效"
+    },
+    {
+      "field": "member_contract_cancel_pt",
+      "type": "STRING",
+      "comment": "会员取消日期。最新的会员取消日期。仅对在期签约会员有效"
+    },
+    {
+      "field": "member_sign_status",
+      "type": "STRING",
+      "comment": "会员签约状态。签约中、已取消。仅对在期签约会员有效"
+    },
+    {
+      "field": "auto_renew_status",
+      "type": "STRING",
+      "comment": "自动续费状态。当用户前一日的会员剩余天数为1时，才统计此值，否则值被设置为「null」。仅对在期签约会员有效"
+    },
+    {
+      "field": "manual_renew_status",
+      "type": "STRING",
+      "comment": "手动续费状态。当用户前一日的会员剩余天数为0时，才统计此值，否则值被设置为「null」"
+    },
+    {
+      "field": "psv_paywall_pt_list",
+      "type": "ARRAY<STRING>",
+      "comment": "被弹付费墙日期列表"
+    },
+    {
+      "field": "agent_api_call_times",
+      "type": "BIGINT",
+      "comment": "Agent API调用次数"
+    },
+    {
+      "field": "agent_api_cost",
+      "type": "DECIMAL(38,18)",
+      "comment": "Agent API调用成本"
+    },
+    {
+      "field": "member_end_time",
+      "type": "DATETIME",
+      "comment": "会员到期时间"
+    },
+    {
+      "field": "dialog_input_cnt",
+      "type": "BIGINT",
+      "comment": "对话输入数"
+    },
+    {
+      "field": "email",
+      "type": "STRING",
+      "comment": "邮箱"
+    },
+    {
+      "field": "total_pay_order_cnt",
+      "type": "BIGINT",
+      "comment": "历史总支付订单数"
+    },
+    {
+      "field": "total_pay_amount",
+      "type": "DECIMAL(38,18)",
+      "comment": "历史总支付金额"
+    },
+    {
+      "field": "total_decrease_power",
+      "type": "BIGINT",
+      "comment": "历史总计消耗算力点数"
+    },
+    {
+      "field": "generate_media_cnt",
+      "type": "BIGINT",
+      "comment": "生成媒体数。媒体：图片、视频、音频"
+    },
+    {
+      "field": "export_media_cnt",
+      "type": "BIGINT",
+      "comment": "导出媒体数"
+    },
+    {
+      "field": "export_self_gen_media_cnt",
+      "type": "BIGINT",
+      "comment": "导出自己生成的媒体数"
+    },
+    {
+      "field": "agent_generate_media_cnt",
+      "type": "BIGINT",
+      "comment": "Agent生成媒体数"
+    },
+    {
+      "field": "agent_export_media_cnt",
+      "type": "BIGINT",
+      "comment": "Agent导出媒体数"
+    },
+    {
+      "field": "agent_export_self_gen_media_cnt",
+      "type": "BIGINT",
+      "comment": "Agent导出自己生成的媒体数"
+    },
+    {
+      "field": "generator_generate_media_cnt",
+      "type": "BIGINT",
+      "comment": "生成器生成媒体数"
+    },
+    {
+      "field": "generator_export_media_cnt",
+      "type": "BIGINT",
+      "comment": "导出生成器生成媒体数"
+    },
+    {
+      "field": "generator_export_self_gen_media_cnt",
+      "type": "BIGINT",
+      "comment": "导出自己生成器生成的媒体数"
+    },
+    {
+      "field": "af_level",
+      "type": "STRING",
+      "comment": "反作弊评级"
+    },
+    {
+      "field": "af_register_device_id",
+      "type": "STRING",
+      "comment": "反作弊注册设备ID"
+    },
+    {
+      "field": "af_last_login_device_id",
+      "type": "STRING",
+      "comment": "反作弊最后登录设备ID"
+    },
+    {
+      "field": "af_reason",
+      "type": "STRING",
+      "comment": "反作弊原因"
+    },
+    {
+      "field": "first_visit_country",
+      "type": "STRING",
+      "comment": "首次访问国家"
+    },
+    {
+      "field": "first_visit_channel_type",
+      "type": "STRING",
+      "comment": "首次访问渠道类型"
+    },
+    {
+      "field": "first_visit_channel_code",
+      "type": "STRING",
+      "comment": "首次访问渠道代码"
+    },
+    {
+      "field": "expired_pay_power",
+      "type": "BIGINT",
+      "comment": "过期算力点数。应该包括会员算力过期和付费算力过期"
+    },
+    {
+      "field": "decrease_pay_power",
+      "type": "BIGINT",
+      "comment": "消耗的付费算力点数"
+    },
+    {
+      "field": "decrease_free_power",
+      "type": "BIGINT",
+      "comment": "消耗的免费算力点数"
+    },
+    {
+      "field": "pays",
+      "type": "ARRAY<STRUCT<`day`:STRING, `count`:BIGINT, amount:DECIMAL(38,18)>>",
+      "comment": "用户支付订单，按天统计"
+    },
+    {
+      "field": "amortize_pays",
+      "type": "MAP<STRING,DOUBLE>",
+      "comment": "用户支付订单按天分摊。key：日期，value：金额"
+    },
+    {
+      "field": "to_renew_contract_biz_id",
+      "type": "STRING",
+      "comment": "待续费签约单ID。当前按照业务指31天前（不含统计日期）的签约单"
+    },
+    {
+      "field": "renew_status",
+      "type": "STRING",
+      "comment": "续费状态。【已续费｜改签｜已取消｜代扣未成功】"
+    },
+    {
+      "field": "historical_renew_contract_biz_id",
+      "type": "STRING",
+      "comment": "已经不可变的签约单ID。35天前（不含统计日期）的签约单"
+    },
+    {
+      "field": "historical_renew_status",
+      "type": "STRING",
+      "comment": "已经不可变的续签状态。【已续费｜改签｜已取消｜代扣失败】"
+    },
+    {
+      "field": "renew_order_cnt",
+      "type": "BIGINT",
+      "comment": "续费订单数"
+    },
+    {
+      "field": "renew_amount",
+      "type": "DECIMAL(38,18)",
+      "comment": "续费金额"
+    },
+    {
+      "field": "costs",
+      "type": "MAP<STRING,DOUBLE>",
+      "comment": "成本"
+    },
+    {
+      "field": "renew_pt_list",
+      "type": "ARRAY<STRING>",
+      "comment": "续费日期列表"
+    },
+    {
+      "field": "renews",
+      "type": "MAP<STRING,DOUBLE>",
+      "comment": "续费"
+    },
+    {
+      "field": "first_visit_ip",
+      "type": "STRING",
+      "comment": "首次访问IP"
+    },
+    {
+      "field": "deleted",
+      "type": "BIGINT",
+      "comment": "是否删除"
+    },
+    {
+      "field": "cid_first_access_pt",
+      "type": "STRING",
+      "comment": "对应CID的首访日期"
+    },
+    {
+      "field": "is_gift_member",
+      "type": "STRING",
+      "comment": "是否赠送会员"
+    },
+    {
+      "field": "signup_time",
+      "type": "DATETIME",
+      "comment": "注册时间"
+    },
+    {
+      "field": "decrease_individual_power",
+      "type": "BIGINT",
+      "comment": "消耗的个人算力"
+    },
+    {
+      "field": "decrease_team_power",
+      "type": "BIGINT",
+      "comment": "消费的团队算力"
+    },
+    {
+      "field": "first_visit_time",
+      "type": "DATETIME",
+      "comment": "首次访问时间"
+    },
+    {
+      "field": "first_visit_clickid",
+      "type": "STRING",
+      "comment": "首次访问clickid"
+    },
+    {
+      "field": "first_visit_utm_source",
+      "type": "STRING",
+      "comment": "首次访问UTM来源"
+    },
+    {
+      "field": "first_visit_utm_medium",
+      "type": "STRING",
+      "comment": "首次访问UTM媒介"
+    },
+    {
+      "field": "first_visit_utm_campaign",
+      "type": "STRING",
+      "comment": "首次访问UTM活动"
+    },
+    {
+      "field": "first_visit_utm_term",
+      "type": "STRING",
+      "comment": "首次访问UTM关键词"
+    },
+    {
+      "field": "first_visit_utm_content",
+      "type": "STRING",
+      "comment": "首次访问UTM内容"
+    },
+    {
+      "field": "first_visit_log",
+      "type": "STRING",
+      "comment": "首次访问日志"
+    },
+    {
+      "field": "first_pay_time",
+      "type": "DATETIME",
+      "comment": "首次支付时间"
+    },
+    {
+      "field": "first_pay_amount",
+      "type": "DECIMAL(38,18)",
+      "comment": "首次支付金额"
+    },
+    {
+      "field": "is_en_user",
+      "type": "STRING",
+      "comment": "是否英语用户: 1=是 0=否"
+    }
+  ],
+  "dws_ad_uuid_cp_user_profile_df": [
+    {
+      "field": "user_id",
+      "type": "BIGINT",
+      "comment": "用户ID"
+    },
+    {
+      "field": "user_uuid",
+      "type": "STRING",
+      "comment": "用户UUID"
+    },
+    {
+      "field": "ever_vip",
+      "type": "STRING",
+      "comment": "是否曾经是VIP.y: 是;n: 否"
+    },
+    {
+      "field": "first_pay_id",
+      "type": "BIGINT",
+      "comment": "首次支付支付单ID"
+    },
+    {
+      "field": "first_pay_biz_id",
+      "type": "STRING",
+      "comment": "首次支付业务流水号"
+    },
+    {
+      "field": "first_pay_time",
+      "type": "DATETIME",
+      "comment": "首次支付时间"
+    },
+    {
+      "field": "first_pay_pt",
+      "type": "STRING",
+      "comment": "首次支付时间"
+    },
+    {
+      "field": "first_pay_sku",
+      "type": "STRING",
+      "comment": "首次支付SKU"
+    },
+    {
+      "field": "first_pay_amount",
+      "type": "DECIMAL(38,18)",
+      "comment": "首次付款金额"
+    },
+    {
+      "field": "first_pay_vip_type",
+      "type": "STRING",
+      "comment": "首次支付VIP类型"
+    },
+    {
+      "field": "first_pay_vip_period_type",
+      "type": "STRING",
+      "comment": "首次支付会员期限类型"
+    },
+    {
+      "field": "pay_amount",
+      "type": "DECIMAL(38,18)",
+      "comment": "支付金额"
+    },
+    {
+      "field": "pay_cnt",
+      "type": "BIGINT",
+      "comment": "支付笔数"
+    },
+    {
+      "field": "renew_amount",
+      "type": "DECIMAL(38,18)",
+      "comment": "续费金额"
+    },
+    {
+      "field": "renew_cnt",
+      "type": "BIGINT",
+      "comment": "续费笔数"
+    },
+    {
+      "field": "total_pay_amount",
+      "type": "DECIMAL(38,18)",
+      "comment": "总支付金额"
+    },
+    {
+      "field": "total_pay_cnt",
+      "type": "BIGINT",
+      "comment": "总支付笔数"
+    },
+    {
+      "field": "pay_pt_list",
+      "type": "ARRAY<STRING>",
+      "comment": "支付日期列表"
+    },
+    {
+      "field": "is_vip",
+      "type": "STRING",
+      "comment": "是否VIP. y:是;n:否"
+    },
+    {
+      "field": "vip_biz_id",
+      "type": "STRING",
+      "comment": "VIP业务流水号"
+    },
+    {
+      "field": "vip_type",
+      "type": "STRING",
+      "comment": "VIP类型"
+    },
+    {
+      "field": "sku_name",
+      "type": "STRING",
+      "comment": "VIP SKU名称"
+    },
+    {
+      "field": "vip_period_type",
+      "type": "STRING",
+      "comment": "会员期限类型"
+    },
+    {
+      "field": "vip_start_time",
+      "type": "DATETIME",
+      "comment": "会员开始时间"
+    },
+    {
+      "field": "vip_end_time",
+      "type": "DATETIME",
+      "comment": "会员失效时间"
+    },
+    {
+      "field": "vip_left_days",
+      "type": "BIGINT",
+      "comment": "会员剩余天数"
+    },
+    {
+      "field": "to_renew_contract_id",
+      "type": "STRING",
+      "comment": "待续费合同ID"
+    },
+    {
+      "field": "historical_to_renew_contract_id",
+      "type": "STRING",
+      "comment": "历史待续费合同ID"
+    },
+    {
+      "field": "to_renew",
+      "type": "STRING",
+      "comment": "是否待续费会员（31天）"
+    },
+    {
+      "field": "historical_to_renew",
+      "type": "STRING",
+      "comment": "是否待续费会员（35天）"
+    },
+    {
+      "field": "renew_status",
+      "type": "STRING",
+      "comment": "续费状态（31天）。renew｜resign｜cancel｜refund｜break(default)"
+    },
+    {
+      "field": "historical_renew_status",
+      "type": "STRING",
+      "comment": "续费状态（35天）。renew｜resign｜cancel｜refund｜break(default)"
+    },
+    {
+      "field": "amortize_month_amount",
+      "type": "DECIMAL(38,18)",
+      "comment": "分摊到月的金额"
+    },
+    {
+      "field": "contract_start_time",
+      "type": "DATETIME",
+      "comment": "当前会员合约开始时间"
+    }
+  ],
+  "dws_uuid_active_profile_df": [
+    {
+      "field": "uuid",
+      "type": "STRING",
+      "comment": ""
+    },
+    {
+      "field": "lovart_web_active_day_list",
+      "type": "ARRAY<STRING>",
+      "comment": "Lovart Web活跃日期列表(yyyymmdd, 增序)"
+    },
+    {
+      "field": "lovart_web_first_visit_cid",
+      "type": "STRING",
+      "comment": "Lovart Web首次进站使用的cid"
+    },
+    {
+      "field": "lovart_web_first_visit_referral_code",
+      "type": "STRING",
+      "comment": "Lovart Web首次进站使用的邀请码(没有则为空)"
+    },
+    {
+      "field": "lovart_web_first_visit_utm_channel",
+      "type": "STRING",
+      "comment": "Lovart Web首次进站使用的渠道号(没有则为空)"
+    },
+    {
+      "field": "lovart_web_first_visit_time",
+      "type": "DATETIME",
+      "comment": "Lovart Web首访时间"
+    },
+    {
+      "field": "lovart_web_first_visit_pt",
+      "type": "STRING",
+      "comment": "Lovart Web首访日期(yyyymmdd)"
+    },
+    {
+      "field": "lovart_web_first_visit_country",
+      "type": "STRING",
+      "comment": "Lovart Web首次访问所在国家"
+    },
+    {
+      "field": "lovart_web_first_visit_province",
+      "type": "STRING",
+      "comment": "Lovart Web首次访问所在省份"
+    },
+    {
+      "field": "lovart_web_last_visit_cid",
+      "type": "STRING",
+      "comment": "Lovart Web末次进站使用的cid"
+    },
+    {
+      "field": "lovart_web_last_visit_referral_code",
+      "type": "STRING",
+      "comment": "Lovart Web末次进站使用的邀请码(没有则为空)"
+    },
+    {
+      "field": "lovart_web_last_visit_utm_channel",
+      "type": "STRING",
+      "comment": "Lovart Web末次进站使用的渠道号(没有则为空)"
+    },
+    {
+      "field": "lovart_web_last_visit_time",
+      "type": "DATETIME",
+      "comment": "Lovart Web末次访时间"
+    },
+    {
+      "field": "lovart_web_last_visit_pt",
+      "type": "STRING",
+      "comment": "Lovart Web末次访日期(yyyymmdd)"
+    },
+    {
+      "field": "lovart_web_last_visit_country",
+      "type": "STRING",
+      "comment": "Lovart Web末次访问所在国家"
+    },
+    {
+      "field": "lovart_web_last_visit_province",
+      "type": "STRING",
+      "comment": "Lovart Web末次访问所在省份"
+    },
+    {
+      "field": "first_use_referral_code",
+      "type": "STRING",
+      "comment": "Lovart Web首次使用的邀请码(没有则为空)"
+    },
+    {
+      "field": "first_use_user_time",
+      "type": "DATETIME",
+      "comment": "Lovart Web首次使用邀请码时间(没有则为空)"
+    },
+    {
+      "field": "first_use_user_pt",
+      "type": "STRING",
+      "comment": "Lovart Web首次使用邀请码日期(yyyymmdd,  没有则为空)"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "audit_id": "audit_1779259936391_4fe8c3",
+    "request_time": "2026-05-20T06:52:16.391Z",
+    "actor": "smoke-test",
+    "action_type": "preview_audience",
+    "asset_type": "audience",
+    "asset_id": "preview",
+    "condition_json": "{\"logic\":\"AND\",\"conditions\":[]}",
+    "result_summary": "{\"estimated_user_cnt\":800,\"requires_approval\":true}",
+    "risk_level": "high"
+  },
+  {
+    "audit_id": "audit_1779259865897_0fc1c1",
+    "request_time": "2026-05-20T06:51:05.897Z",
+    "actor": "smoke-test",
+    "action_type": "preview_audience",
+    "asset_type": "audience",
+    "asset_id": "preview",
+    "condition_json": "{\"logic\":\"AND\",\"conditions\":[]}",
+    "result_summary": "{\"estimated_user_cnt\":800,\"requires_approval\":true}",
+    "risk_level": "high"
+  }
+]

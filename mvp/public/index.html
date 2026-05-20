@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>画像平台 MVP</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-mark">UP</span>
+        <div>
+          <strong>画像平台</strong>
+          <small>Phase 1 MVP</small>
+        </div>
+      </div>
+      <nav>
+        <a href="#overview" class="active">首页</a>
+        <a href="#tags">标签目录</a>
+        <a href="#map">标签地图</a>
+        <a href="#audience">人群圈选</a>
+        <a href="#exports">导出任务</a>
+        <a href="#quality">质量监控</a>
+        <a href="#requests">需求看板</a>
+        <a href="#audit">审计日志</a>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <div>
+          <h1>用户画像平台</h1>
+          <p>标签可查、口径可信、人群可圈选、导出可追溯。</p>
+        </div>
+        <div class="user-pill">local-demo-user</div>
+      </header>
+
+      <section id="overview" class="view">
+        <div class="section-title">
+          <h2>首页概览</h2>
+          <p>基于现有标签元数据草稿生成的一期资产概览。</p>
+        </div>
+        <div id="kpis" class="kpi-grid"></div>
+        <div class="grid two">
+          <article class="card">
+            <h3>分类分布</h3>
+            <div id="categoryDistribution" class="bar-list"></div>
+          </article>
+          <article class="card">
+            <h3>最近标签</h3>
+            <div id="recentTags" class="list"></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="tags" class="view">
+        <div class="section-title">
+          <h2>标签目录</h2>
+          <p>支持按关键词、分类、产品、区域、状态和敏感等级检索。</p>
+        </div>
+        <div class="filters">
+          <input id="tagKeyword" placeholder="搜索标签名称、编码、来源表" />
+          <select id="tagSensitivity">
+            <option value="">全部敏感等级</option>
+            <option value="low">普通</option>
+            <option value="medium">中敏</option>
+            <option value="high">高敏</option>
+          </select>
+          <button id="tagSearchBtn">查询</button>
+        </div>
+        <div class="grid two">
+          <article class="card table-card">
+            <h3>标签列表</h3>
+            <div id="tagTable"></div>
+          </article>
+          <article class="card">
+            <h3>标签详情</h3>
+            <div id="tagDetail" class="detail-empty">点击左侧标签查看详情</div>
+          </article>
+        </div>
+      </section>
+
+      <section id="map" class="view">
+        <div class="section-title">
+          <h2>标签地图</h2>
+          <p>按分类、产品、区域、状态查看标签资产分布。</p>
+        </div>
+        <div class="grid two">
+          <article class="card">
+            <h3>分类树</h3>
+            <div id="tagTree" class="tree"></div>
+          </article>
+          <article class="card">
+            <h3>产品 / 区域 / 状态</h3>
+            <div id="mapDistributions" class="stack"></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="audience" class="view">
+        <div class="section-title">
+          <h2>人群圈选</h2>
+          <p>组合标签条件，预估人群规模，保存常用人群包。</p>
+        </div>
+        <article class="card">
+          <div class="audience-toolbar">
+            <select id="audienceLogic">
+              <option value="AND">AND：全部满足</option>
+              <option value="OR">OR：任一满足</option>
+            </select>
+            <button id="addConditionBtn">添加条件</button>
+            <button id="previewAudienceBtn">预估人群</button>
+          </div>
+          <div id="conditionList" class="condition-list"></div>
+          <div id="audiencePreview" class="preview-box">添加条件后可预估人数。</div>
+          <div class="save-box">
+            <input id="audienceName" placeholder="人群包名称，例如：近30天高活跃会员" />
+            <input id="audiencePurpose" placeholder="业务用途，例如：会员召回活动" />
+            <button id="saveAudienceBtn">保存人群包</button>
+          </div>
+        </article>
+        <article class="card">
+          <h3>人群包管理</h3>
+          <div id="audienceList" class="list"></div>
+        </article>
+      </section>
+
+      <section id="exports" class="view">
+        <div class="section-title">
+          <h2>导出任务</h2>
+          <p>提交导出申请并查看审批、目标和结果位置。</p>
+        </div>
+        <article class="card">
+          <div class="filters">
+            <select id="exportAudience"></select>
+            <select id="exportTarget">
+              <option value="csv">CSV 文件</option>
+              <option value="odps">ODPS 结果表</option>
+            </select>
+            <input id="exportPurpose" placeholder="导出用途，必填" />
+            <button id="requestExportBtn">提交导出</button>
+          </div>
+          <div id="exportList" class="list"></div>
+        </article>
+      </section>
+
+      <section id="quality" class="view">
+        <div class="section-title">
+          <h2>质量监控</h2>
+          <p>查看标签覆盖率、空值率、任务状态和治理风险。</p>
+        </div>
+        <article class="card table-card">
+          <div id="qualityTable"></div>
+        </article>
+      </section>
+
+      <section id="requests" class="view">
+        <div class="section-title">
+          <h2>需求看板</h2>
+          <p>一期先展示飞书需求记录的模拟接入结果。</p>
+        </div>
+        <article class="card">
+          <div id="requestBoard" class="kanban"></div>
+        </article>
+      </section>
+
+      <section id="audit" class="view">
+        <div class="section-title">
+          <h2>审计日志</h2>
+          <p>记录标签查看、圈选预估、保存人群包、导出申请等动作。</p>
+        </div>
+        <article class="card table-card">
+          <div id="auditTable"></div>
+        </article>
+      </section>
+    </main>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

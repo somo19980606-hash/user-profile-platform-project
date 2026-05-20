@@ -1,0 +1,1016 @@
+{
+	"PagingInfo": {
+		"Lineages": [
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743500980,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.dim_user_lang_judge_df_1d:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "dim_user_lang_judge_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dim_user_lang_judge_df_1d",
+					"Name": "dim_user_lang_judge_df_1d"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743501749,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.dwd_ad_agent_media_output_df:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "dwd_ad_agent_media_output_df"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dwd_ad_agent_media_output_df",
+					"Name": "dwd_ad_agent_media_output_df"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743501727,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.dwd_ad_c_trade_order_detail_df_1d:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "dwd_ad_c_trade_order_detail_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dwd_ad_c_trade_order_detail_df_1d",
+					"Name": "dwd_ad_c_trade_order_detail_df_1d"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743497216,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.dwd_ad_media_export_di_1d:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "dwd_ad_media_export_di_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dwd_ad_media_export_di_1d",
+					"Name": "dwd_ad_media_export_di_1d"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743500977,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.dwd_c_order_amortization_df_1d:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "dwd_c_order_amortization_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dwd_c_order_amortization_df_1d",
+					"Name": "dwd_c_order_amortization_df_1d"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743500332,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.dwd_c_order_detail_df:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "dwd_c_order_detail_df"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dwd_c_order_detail_df",
+					"Name": "dwd_c_order_detail_df"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743501726,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.dwd_sd_generate_detail_di:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "dwd_sd_generate_detail_di"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dwd_sd_generate_detail_di",
+					"Name": "dwd_sd_generate_detail_di"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743501749,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.dwd_sd_generate_output_di_1d:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "dwd_sd_generate_output_di_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dwd_sd_generate_output_di_1d",
+					"Name": "dwd_sd_generate_output_di_1d"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743499552,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.dws_ad_cid_user_profile_df_1d:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "dws_ad_cid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_cid_user_profile_df_1d",
+					"Name": "dws_ad_cid_user_profile_df_1d"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743500616,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.dws_ad_user_activity_index_di_1d:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "dws_ad_user_activity_index_di_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_user_activity_index_di_1d",
+					"Name": "dws_ad_user_activity_index_di_1d"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743501164,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.dws_ad_user_model_index_di_1d:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "dws_ad_user_model_index_di_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_user_model_index_di_1d",
+					"Name": "dws_ad_user_model_index_di_1d"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743497843,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.dws_ad_uuid_cp_user_profile_df:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "dws_ad_uuid_cp_user_profile_df"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_cp_user_profile_df",
+					"Name": "dws_ad_uuid_cp_user_profile_df"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743501161,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.dws_ad_uuid_member_profile_df:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "dws_ad_uuid_member_profile_df"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_member_profile_df",
+					"Name": "dws_ad_uuid_member_profile_df"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743500102,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743501324,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.ods_ai_op_experience_code_df:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "ods_ai_op_experience_code_df"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::ods_ai_op_experience_code_df",
+					"Name": "ods_ai_op_experience_code_df"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743500767,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.ods_ai_w_user_ext_df:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "ods_ai_w_user_ext_df"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::ods_ai_w_user_ext_df",
+					"Name": "ods_ai_w_user_ext_df"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743501542,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.ods_c_member_account_df:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "ods_c_member_account_df"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::ods_c_member_account_df",
+					"Name": "ods_c_member_account_df"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743499318,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.ods_c_power_account_df:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "ods_c_power_account_df"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::ods_c_power_account_df",
+					"Name": "ods_c_power_account_df"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743500976,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.ods_c_power_trans_log_df:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "ods_c_power_trans_log_df"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::ods_c_power_trans_log_df",
+					"Name": "ods_c_power_trans_log_df"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743501161,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.ods_c_power_trans_log_di:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "ods_c_power_trans_log_di"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::ods_c_power_trans_log_di",
+					"Name": "ods_c_power_trans_log_di"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743501728,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.ods_cc_e_team_power_trans_log_df:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "ods_cc_e_team_power_trans_log_df"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::ods_cc_e_team_power_trans_log_df",
+					"Name": "ods_cc_e_team_power_trans_log_df"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743497846,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.ods_op_experience_referral_relationship_df:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "ods_op_experience_referral_relationship_df"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::ods_op_experience_referral_relationship_df",
+					"Name": "ods_op_experience_referral_relationship_df"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743501330,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.ods_t_agent_payment_df_1d:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "ods_t_agent_payment_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::ods_t_agent_payment_df_1d",
+					"Name": "ods_t_agent_payment_df_1d"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743501166,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.ods_t_generator_payment_df:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "ods_t_generator_payment_df"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::ods_t_generator_payment_df",
+					"Name": "ods_t_generator_payment_df"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743501164,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.ods_w_lovart_waitlist_df_1d:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "ods_w_lovart_waitlist_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::ods_w_lovart_waitlist_df_1d",
+					"Name": "ods_w_lovart_waitlist_df_1d"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743499543,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.ods_w_project_agent_thread_df:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "ods_w_project_agent_thread_df"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::ods_w_project_agent_thread_df",
+					"Name": "ods_w_project_agent_thread_df"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743500605,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.ods_w_user_df:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "ods_w_user_df"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::ods_w_user_df",
+					"Name": "ods_w_user_df"
+				}
+			},
+			{
+				"DstEntity": {
+					"Attributes": {
+						"rawEntityId": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::dws_ad_uuid_user_profile_df_1d",
+					"Name": "dws_ad_uuid_user_profile_df_1d"
+				},
+				"Relationships": [
+					{
+						"CreateTime": 1778743497846,
+						"Id": "1652080443454191:maxcompute-table.liblibaidwh.ods_w_user_image_detail_df_1d:maxcompute-table.liblibaidwh.dws_ad_uuid_user_profile_df_1d:maxcompute.SQL.10000154671",
+						"Task": {
+							"Attributes": {
+								"channel": "1st",
+								"engine": "maxcompute",
+								"projectId": "106056",
+								"taskId": "10000154671",
+								"taskInstanceId": "1000214765536"
+							},
+							"Id": "10000154671",
+							"Type": "dataworks-sql"
+						}
+					}
+				],
+				"SrcEntity": {
+					"Attributes": {
+						"endpoint": "http://service.us-east-1.maxcompute.aliyun-inc.com/api",
+						"project": "liblibaidwh",
+						"region": "us-east-1",
+						"table": "ods_w_user_image_detail_df_1d"
+					},
+					"Id": "maxcompute-table:::liblibaidwh::ods_w_user_image_detail_df_1d",
+					"Name": "ods_w_user_image_detail_df_1d"
+				}
+			}
+		],
+		"PageNumber": 1,
+		"PageSize": 100,
+		"TotalCount": 28
+	},
+	"RequestId": "965FC9FB-E916-87ED-BC41-F99AD02ABD09",
+	"Success": true
+}
