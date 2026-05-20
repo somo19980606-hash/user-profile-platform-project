@@ -65,6 +65,9 @@
           <select id="tagCategory">
             <option value="">全部分类</option>
           </select>
+          <select id="tagCategoryL2">
+            <option value="">全部二级分类</option>
+          </select>
           <select id="tagProduct">
             <option value="">全部产品</option>
           </select>
@@ -79,6 +82,9 @@
             <option value="low">普通</option>
             <option value="medium">中敏</option>
             <option value="high">高敏</option>
+          </select>
+          <select id="tagValueType">
+            <option value="">全部值类型</option>
           </select>
           <button id="tagSearchBtn">查询</button>
         </div>
@@ -97,18 +103,26 @@
       <section id="map" class="view">
         <div class="section-title">
           <h2>标签地图</h2>
-          <p>按分类、产品、区域、状态查看标签资产分布。</p>
+          <p>以二级分类查看标签资产、风险和治理提示，并跳转到标签目录继续处理。</p>
         </div>
-        <div class="grid two">
-          <article class="card">
-            <h3>分类树</h3>
-            <div id="tagTree" class="tree"></div>
+        <div class="map-locator">
+          <input id="mapLocator" placeholder="定位分类 / 产品 / 状态" />
+          <button id="mapOpenCatalogBtn" class="secondary" type="button">打开标签目录</button>
+        </div>
+        <div class="grid map-layout">
+          <article class="card map-main">
+            <h3>二级分类资产</h3>
+            <div id="categoryAssetGrid" class="category-asset-grid"></div>
           </article>
-          <article class="card">
-            <h3>产品 / 区域 / 状态</h3>
-            <div id="mapDistributions" class="stack"></div>
+          <article class="card map-side">
+            <h3>治理提示</h3>
+            <div id="governanceInsights" class="insight-list"></div>
           </article>
         </div>
+        <article class="card map-distribution-card">
+          <h3>资产维度分布</h3>
+          <div id="mapDistributions" class="distribution-grid"></div>
+        </article>
       </section>
 
       <section id="audience" class="view">

@@ -3,6 +3,7 @@ const state = {
   tags: [],
   audiences: [],
   lastPreview: null,
+  tagMap: null,
 };
 
 const $ = (selector) => document.querySelector(selector);
@@ -56,19 +57,25 @@ function fillSelect(selector, values, label) {
   $(selector).value = values.includes(current) ? current : "";
 }
 
-function renderBars(container, rows) {
+function renderBars(container, rows, getFilter = null) {
   const max = Math.max(...rows.map((row) => row.count), 1);
   container.innerHTML = rows
     .map(
-      (row) => `
-        <div class="bar">
+      (row) => {
+        const filter = getFilter ? ` data-filter="${escapeHtml(JSON.stringify(getFilter(row)))}"` : "";
+        return `
+        <div class="bar${getFilter ? " clickable-bar" : ""}"${filter}>
           <span>${escapeHtml(row.name)}</span>
           <div class="bar-track"><div class="bar-fill" style="width:${(row.count / max) * 100}%"></div></div>
           <strong>${row.count}</strong>
         </div>
-      `,
+      `;
+      },
     )
     .join("");
+  container.querySelectorAll("[data-filter]").forEach((item) => {
+    item.addEventListener("click", () => applyTagFilters(JSON.parse(item.dataset.filter)));
+  });
 }
 
 async function loadDashboard() {
@@ -99,9 +106,11 @@ async function loadDashboard() {
 async function loadTagFilterOptions() {
   state.allTags = await api("/api/tags");
   fillSelect("#tagCategory", uniqueValues(state.allTags, "tag_category_l1"), "全部分类");
+  fillSelect("#tagCategoryL2", uniqueValues(state.allTags, "tag_category_l2"), "全部二级分类");
   fillSelect("#tagProduct", uniqueValues(state.allTags, "applicable_product"), "全部产品");
   fillSelect("#tagRegion", uniqueValues(state.allTags, "applicable_market_region"), "全部区域");
   fillSelect("#tagStatus", uniqueValues(state.allTags, "tag_status"), "全部状态");
+  fillSelect("#tagValueType", uniqueValues(state.allTags, "tag_value_type"), "全部值类型");
 }
 
 async function loadTags() {
@@ -110,10 +119,12 @@ async function loadTags() {
   [
     ["keyword", $("#tagKeyword").value.trim()],
     ["category", $("#tagCategory").value],
+    ["categoryL2", $("#tagCategoryL2").value],
     ["product", $("#tagProduct").value],
     ["region", $("#tagRegion").value],
     ["status", $("#tagStatus").value],
     ["sensitivity", $("#tagSensitivity").value],
+    ["valueType", $("#tagValueType").value],
   ].forEach(([key, value]) => {
     if (value) params.set(key, value);
   });
@@ -149,6 +160,19 @@ async function loadTags() {
   renderConditionRows();
 }
 
+async function applyTagFilters(filters = {}) {
+  $("#tagKeyword").value = filters.keyword || "";
+  $("#tagCategory").value = filters.category || "";
+  $("#tagCategoryL2").value = filters.categoryL2 || "";
+  $("#tagProduct").value = filters.product || "";
+  $("#tagRegion").value = filters.region || "";
+  $("#tagStatus").value = filters.status || "";
+  $("#tagSensitivity").value = filters.sensitivity || "";
+  $("#tagValueType").value = filters.valueType || "";
+  location.hash = "#tags";
+  await loadTags();
+}
+
 async function loadTagDetail(tagCode) {
   const tag = await api(`/api/tags/${encodeURIComponent(tagCode)}`);
   $("#tagDetail").innerHTML = `
@@ -171,24 +195,71 @@ async function loadTagDetail(tagCode) {
 
 async function loadTagMap() {
   const data = await api("/api/tag-map");
-  $("#tagTree").innerHTML = data.categories
-    .map(
-      (category) => `
-        <details open>
-          <summary>${escapeHtml(category.name)} (${category.count})</summary>
-          <ul>${category.children.map((child) => `<li>${escapeHtml(child.name)}：${child.count}</li>`).join("")}</ul>
-        </details>
-      `,
-    )
-    .join("");
+  state.tagMap = data;
+  renderTagMap();
+}
+
+function sensitivityLabel(level) {
+  return { low: "普通", medium: "中敏", high: "高敏" }[level] || level;
+}
+
+function renderTagMap() {
+  const data = state.tagMap;
+  if (!data) return;
+  const keyword = $("#mapLocator").value.trim().toLowerCase();
+  const assets = data.category_assets.filter((asset) => {
+    if (!keyword) return true;
+    return `${asset.category_l1} ${asset.category_l2}`.toLowerCase().includes(keyword);
+  });
+  $("#categoryAssetGrid").innerHTML = assets.length
+    ? assets
+        .map(
+          (asset) => `
+            <button class="category-asset" type="button" data-filter="${escapeHtml(JSON.stringify({ category: asset.category_l1, categoryL2: asset.category_l2 }))}">
+              <span>${escapeHtml(asset.category_l1)}</span>
+              <strong>${escapeHtml(asset.category_l2)}</strong>
+              <dl>
+                <div><dt>标签</dt><dd>${asset.count}</dd></div>
+                <div><dt>上线</dt><dd>${asset.online_count}</dd></div>
+                <div><dt>敏感</dt><dd>${asset.sensitive_count}</dd></div>
+                <div><dt>监控</dt><dd>${Math.round(asset.monitor_rate * 100)}%</dd></div>
+              </dl>
+              ${asset.quality_issue_count ? `<em>${asset.quality_issue_count} 个治理风险</em>` : `<em class="ok">暂无明显风险</em>`}
+            </button>
+          `,
+        )
+        .join("")
+    : emptyState("没有匹配的二级分类", "可清空定位条件后查看全部资产。");
+  $("#categoryAssetGrid").querySelectorAll("[data-filter]").forEach((item) => {
+    item.addEventListener("click", () => applyTagFilters(JSON.parse(item.dataset.filter)));
+  });
+  $("#governanceInsights").innerHTML = data.governance_insights.length
+    ? data.governance_insights
+        .map(
+          (insight) => `
+            <button class="insight-item ${escapeHtml(insight.level)}" type="button" data-filter="${escapeHtml(JSON.stringify(insight.query))}">
+              <strong>${escapeHtml(insight.title)}</strong>
+              <span>${escapeHtml(insight.detail)}</span>
+            </button>
+          `,
+        )
+        .join("")
+    : emptyState("暂无治理提示", "当前标签元数据没有触发高敏、监控或状态类规则。");
+  $("#governanceInsights").querySelectorAll("[data-filter]").forEach((item) => {
+    item.addEventListener("click", () => applyTagFilters(JSON.parse(item.dataset.filter)));
+  });
   $("#mapDistributions").innerHTML = `
-    <div><h3>产品分布</h3><div id="productBars"></div></div>
-    <div><h3>区域分布</h3><div id="regionBars"></div></div>
-    <div><h3>状态分布</h3><div id="statusBars"></div></div>
+    <div><h4>产品分布</h4><div id="productBars"></div></div>
+    <div><h4>区域分布</h4><div id="regionBars"></div></div>
+    <div><h4>状态分布</h4><div id="statusBars"></div></div>
+    <div><h4>敏感等级</h4><div id="sensitivityBars"></div></div>
+    <div><h4>值类型</h4><div id="valueTypeBars"></div></div>
   `;
-  renderBars($("#productBars"), data.product_distribution);
-  renderBars($("#regionBars"), data.region_distribution);
-  renderBars($("#statusBars"), data.status_distribution);
+  renderBars($("#productBars"), data.product_distribution, (row) => ({ product: row.name }));
+  renderBars($("#regionBars"), data.region_distribution, (row) => ({ region: row.name }));
+  renderBars($("#statusBars"), data.status_distribution, (row) => ({ status: row.name }));
+  renderBars($("#sensitivityBars"), data.sensitivity_distribution.map((row) => ({ ...row, name: sensitivityLabel(row.name), value: row.name })), (row) => ({ sensitivity: row.value }));
+  renderBars($("#valueTypeBars"), data.value_type_distribution, (row) => ({ valueType: row.name }));
 }
 
 function conditionHtml(index, condition = {}) {
@@ -424,12 +495,14 @@ function setupNavigation() {
 
 function setupEvents() {
   $("#tagSearchBtn").addEventListener("click", loadTags);
-  ["#tagKeyword", "#tagCategory", "#tagProduct", "#tagRegion", "#tagStatus", "#tagSensitivity"].forEach((selector) => {
+  ["#tagKeyword", "#tagCategory", "#tagCategoryL2", "#tagProduct", "#tagRegion", "#tagStatus", "#tagSensitivity", "#tagValueType"].forEach((selector) => {
     $(selector).addEventListener("change", loadTags);
   });
   $("#tagKeyword").addEventListener("keydown", (event) => {
     if (event.key === "Enter") loadTags();
   });
+  $("#mapLocator").addEventListener("input", renderTagMap);
+  $("#mapOpenCatalogBtn").addEventListener("click", () => applyTagFilters({ keyword: $("#mapLocator").value.trim() }));
   $("#addConditionBtn").addEventListener("click", () => {
     $("#conditionList").insertAdjacentHTML("beforeend", conditionHtml(Date.now()));
     renderConditionRows();

@@ -48,6 +48,55 @@ function groupCountMulti(items, field) {
   return Object.entries(counts).map(([name, count]) => ({ name, count }));
 }
 
+function hasQualityIssue(tag) {
+  return tag.has_monitor !== "Y" || tag.tag_status !== "已上线";
+}
+
+function buildGovernanceInsights(categoryAssets) {
+  const insights = [];
+  const levelWeight = { high: 3, medium: 2, low: 1 };
+  for (const asset of categoryAssets) {
+    if (asset.count === 0) continue;
+    if (asset.high_sensitive_count > 0) {
+      insights.push({
+        type: "risk",
+        level: "high",
+        title: `${asset.category_l2}存在高敏标签`,
+        detail: `${asset.category_l1} / ${asset.category_l2} 有 ${asset.high_sensitive_count} 个高敏标签，需要确认权限和导出审批链路。`,
+        query: { categoryL2: asset.category_l2, sensitivity: "high" },
+      });
+    }
+    if (asset.monitor_rate < 0.8) {
+      insights.push({
+        type: "monitor",
+        level: asset.monitor_rate === 0 ? "high" : "medium",
+        title: `${asset.category_l2}监控覆盖不足`,
+        detail: `${asset.category_l2} 监控覆盖率为 ${Math.round(asset.monitor_rate * 100)}%，优先补齐核心标签监控。`,
+        query: { categoryL2: asset.category_l2 },
+      });
+    }
+    if (asset.online_count < asset.count) {
+      insights.push({
+        type: "status",
+        level: "medium",
+        title: `${asset.category_l2}存在非上线标签`,
+        detail: `${asset.category_l2} 有 ${asset.count - asset.online_count} 个标签未处于已上线状态，标签目录需确认是否可用。`,
+        query: { categoryL2: asset.category_l2 },
+      });
+    }
+    if (asset.count === 1) {
+      insights.push({
+        type: "structure",
+        level: "low",
+        title: `${asset.category_l2}分类资产较薄`,
+        detail: `${asset.category_l2} 当前仅 1 个标签，后续新增标签时建议复核分类是否需要合并或补充。`,
+        query: { categoryL2: asset.category_l2 },
+      });
+    }
+  }
+  return insights.sort((left, right) => levelWeight[right.level] - levelWeight[left.level]).slice(0, 8);
+}
+
 export function createTagService({ tagStore }) {
   let normalizedCache = null;
 
@@ -72,6 +121,8 @@ export function createTagService({ tagStore }) {
       if (query.region && tag.applicable_market_region !== query.region) return false;
       if (query.status && tag.tag_status !== query.status) return false;
       if (query.sensitivity && tag.sensitivity_level !== query.sensitivity) return false;
+      if (query.categoryL2 && tag.tag_category_l2 !== query.categoryL2) return false;
+      if (query.valueType && tag.tag_value_type !== query.valueType) return false;
       return true;
     });
   }
@@ -106,6 +157,7 @@ export function createTagService({ tagStore }) {
   async function getTagMap() {
     const tags = await getTags();
     const categoryMap = new Map();
+    const categoryAssetMap = new Map();
     for (const tag of tags) {
       if (!categoryMap.has(tag.tag_category_l1)) {
         categoryMap.set(tag.tag_category_l1, { name: tag.tag_category_l1, count: 0, children: [] });
@@ -118,12 +170,42 @@ export function createTagService({ tagStore }) {
         category.children.push(child);
       }
       child.count += 1;
+
+      const assetKey = `${tag.tag_category_l1}::${tag.tag_category_l2}`;
+      if (!categoryAssetMap.has(assetKey)) {
+        categoryAssetMap.set(assetKey, {
+          category_l1: tag.tag_category_l1,
+          category_l2: tag.tag_category_l2,
+          count: 0,
+          online_count: 0,
+          sensitive_count: 0,
+          high_sensitive_count: 0,
+          monitored_count: 0,
+          monitor_rate: 0,
+          quality_issue_count: 0,
+        });
+      }
+      const asset = categoryAssetMap.get(assetKey);
+      asset.count += 1;
+      if (tag.tag_status === "已上线") asset.online_count += 1;
+      if (tag.is_sensitive) asset.sensitive_count += 1;
+      if (tag.sensitivity_level === "high") asset.high_sensitive_count += 1;
+      if (tag.has_monitor === "Y") asset.monitored_count += 1;
+      if (hasQualityIssue(tag)) asset.quality_issue_count += 1;
     }
+    const categoryAssets = [...categoryAssetMap.values()].map((asset) => ({
+      ...asset,
+      monitor_rate: asset.count ? Number((asset.monitored_count / asset.count).toFixed(4)) : 0,
+    }));
     return {
       categories: [...categoryMap.values()],
+      category_assets: categoryAssets,
       product_distribution: groupCountMulti(tags, "applicable_product"),
       region_distribution: groupCount(tags, "applicable_market_region"),
       status_distribution: groupCount(tags, "tag_status"),
+      sensitivity_distribution: groupCount(tags, "sensitivity_level"),
+      value_type_distribution: groupCount(tags, "tag_value_type"),
+      governance_insights: buildGovernanceInsights(categoryAssets),
     };
   }
 
