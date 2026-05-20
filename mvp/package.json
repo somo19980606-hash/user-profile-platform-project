@@ -6,7 +6,7 @@
   "description": "轻量用户画像平台 MVP，用于标签目录、地图、人群圈选、导出和审计验证。",
   "scripts": {
     "start": "node src/server.mjs",
-    "test": "node src/smoke-test.mjs"
+    "test": "node --test src/tests/*.test.mjs src/tests/smoke-test.mjs"
   },
   "engines": {
     "node": ">=18"

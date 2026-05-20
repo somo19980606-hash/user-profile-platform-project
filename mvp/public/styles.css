@@ -26,7 +26,7 @@ body {
   position: fixed;
   inset: 0 auto 0 0;
   width: 232px;
-  padding: 24px 18px;
+  padding: 22px 16px;
   background: #111827;
   color: #fff;
 }
@@ -43,7 +43,7 @@ body {
   width: 42px;
   height: 42px;
   place-items: center;
-  border-radius: 12px;
+  border-radius: 8px;
   background: var(--primary);
   font-weight: 700;
 }
@@ -63,7 +63,7 @@ nav a {
   color: #d1d5db;
   text-decoration: none;
   padding: 10px 12px;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 nav a.active,
@@ -74,14 +74,16 @@ nav a:hover {
 
 main {
   margin-left: 232px;
-  padding: 28px;
+  padding: 24px;
 }
 
 .topbar {
   display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 h1,
@@ -106,6 +108,32 @@ p {
   color: var(--primary);
   font-size: 12px;
   font-weight: 600;
+}
+
+.user-pill {
+  white-space: nowrap;
+}
+
+.notice {
+  margin-bottom: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: #f9fafb;
+  color: var(--text);
+  font-size: 13px;
+}
+
+.notice.success {
+  border-color: #a7f3d0;
+  background: #ecfdf5;
+  color: var(--success);
+}
+
+.notice.warning {
+  border-color: #fde68a;
+  background: #fffbeb;
+  color: var(--warning);
 }
 
 .badge.medium {
@@ -145,6 +173,19 @@ p {
   grid-template-columns: minmax(0, 1.3fr) minmax(360px, 0.7fr);
 }
 
+.catalog-layout {
+  grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.55fr);
+}
+
+.audience-layout {
+  grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+  align-items: start;
+}
+
+.audience-layout > .card:last-child {
+  grid-column: 1 / -1;
+}
+
 .kpi-grid {
   display: grid;
   grid-template-columns: repeat(6, minmax(130px, 1fr));
@@ -156,9 +197,9 @@ p {
 .kpi {
   background: var(--panel);
   border: 1px solid var(--line);
-  border-radius: 16px;
+  border-radius: 8px;
   padding: 16px;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
 }
 
 .kpi strong {
@@ -171,6 +212,7 @@ p {
 .audience-toolbar,
 .save-box {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 14px;
 }
@@ -179,7 +221,7 @@ input,
 select,
 button {
   height: 38px;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid var(--line);
   padding: 0 12px;
   background: #fff;
@@ -187,6 +229,10 @@ button {
 
 input {
   min-width: 220px;
+}
+
+select {
+  max-width: 220px;
 }
 
 button {
@@ -234,6 +280,10 @@ tr.clickable:hover {
   overflow: auto;
 }
 
+.table-card table {
+  min-width: 720px;
+}
+
 .detail-empty {
   color: var(--muted);
 }
@@ -277,7 +327,7 @@ tr.clickable:hover {
 
 .list-item {
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 12px;
   background: #fff;
 }
@@ -290,7 +340,7 @@ tr.clickable:hover {
 
 .tree details {
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 10px 12px;
   margin-bottom: 8px;
   background: #fff;
@@ -323,7 +373,7 @@ tr.clickable:hover {
 }
 
 .preview-box {
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 14px;
   background: #f9fafb;
   border: 1px dashed var(--line);
@@ -332,18 +382,39 @@ tr.clickable:hover {
 
 .kanban {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, minmax(180px, 1fr));
   gap: 12px;
+  overflow-x: auto;
 }
 
 .kanban-column {
   background: #f9fafb;
-  border-radius: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
   padding: 12px;
 }
 
 .kanban-column h3 {
   font-size: 14px;
+}
+
+.empty-state {
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  padding: 14px;
+  background: #f9fafb;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.empty-state strong {
+  display: block;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.empty-state p {
+  margin: 0;
 }
 
 @media (max-width: 1100px) {
@@ -352,13 +423,41 @@ tr.clickable:hover {
     width: auto;
   }
 
+  .sidebar nav {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+
+  .sidebar nav a {
+    white-space: nowrap;
+  }
+
   main {
     margin-left: 0;
+    padding: 18px;
   }
 
   .grid.two,
+  .catalog-layout,
+  .audience-layout,
   .kpi-grid,
   .kanban {
     grid-template-columns: 1fr;
+  }
+
+  .audience-layout > .card:last-child {
+    grid-column: auto;
+  }
+
+  .condition-row {
+    grid-template-columns: 1fr;
+  }
+
+  input,
+  select,
+  button {
+    width: 100%;
+    max-width: none;
   }
 }

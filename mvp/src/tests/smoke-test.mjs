@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
 import { once } from "node:events";
 import { readFile, writeFile } from "node:fs/promises";
-import { createProfileServer } from "./server.mjs";
+import { createProfileServer } from "../server.mjs";
 
-const auditLogPath = new URL("../data/audit-log.json", import.meta.url);
+const auditLogPath = new URL("../../data/audit-log.json", import.meta.url);
 
 async function request(baseUrl, path, options = {}) {
   const response = await fetch(new URL(path, baseUrl), {

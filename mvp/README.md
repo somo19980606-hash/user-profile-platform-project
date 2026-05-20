@@ -33,7 +33,21 @@ npm test
 - 导出任务：`data/exports.json`
 - 审计日志：`data/audit-log.json`
 
-当前版本不直连生产 MaxCompute，先用元数据 CSV 和本地样例用户生成器验证平台交互。后续接入生产时，将 `src/repository.mjs` 中的数据读取替换为 MaxCompute 查询或服务端数据库。
+当前版本不直连生产 MaxCompute，先用元数据 CSV 和本地样例用户生成器验证平台交互。后续接入生产时，可优先替换 `src/stores/` 中的数据读取实现，再让现有服务层复用新的数据源。
+
+## 工程结构
+
+```text
+src/
+  server.mjs              # HTTP server 组装和进程启动入口
+  routes/                 # API 路由和静态资源路由
+  services/               # 标签、人群、导出、看板等业务逻辑
+  stores/                 # CSV 元数据和本地 JSON store 读写
+  utils/                  # CSV、日期、hash、id 等纯函数
+  tests/                  # 单元测试和 HTTP smoke test
+```
+
+前端仍是无构建的静态页面，位于 `public/`。当前版本已补齐标签目录筛选、页面内提示、空状态、人群圈选分区和响应式布局，定位为可反复使用的数据治理工作台。
 
 ## 一期页面
 

@@ -17,8 +17,8 @@
 
 - `README.md`：早期 MVP 说明
 - `package.json`：Node.js MVP 启动脚本
-- `src/`：轻量 API 服务
-- `public/`：早期静态页面
+- `src/`：轻量 API 服务，按 routes/services/stores/utils/tests 组织
+- `public/`：可运行的 MVP 工作台页面
 - `data/`：本地 JSON 存储样例
 
 ## sql

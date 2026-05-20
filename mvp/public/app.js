@@ -1,4 +1,5 @@
 const state = {
+  allTags: [],
   tags: [],
   audiences: [],
   lastPreview: null,
@@ -26,6 +27,33 @@ function escapeHtml(value) {
 
 function badge(text, level = "low") {
   return `<span class="badge ${level}">${escapeHtml(text)}</span>`;
+}
+
+function emptyState(title, detail = "") {
+  return `<div class="empty-state"><strong>${escapeHtml(title)}</strong>${detail ? `<p>${escapeHtml(detail)}</p>` : ""}</div>`;
+}
+
+function setNotice(message, level = "info") {
+  const notice = $("#notice");
+  notice.textContent = message;
+  notice.className = `notice ${level}`;
+  notice.hidden = false;
+}
+
+function clearNotice() {
+  $("#notice").hidden = true;
+}
+
+function uniqueValues(rows, field) {
+  return [...new Set(rows.flatMap((row) => String(row[field] || "").split(",").map((value) => value.trim()).filter(Boolean)))].sort();
+}
+
+function fillSelect(selector, values, label) {
+  const current = $(selector).value;
+  $(selector).innerHTML = `<option value="">${label}</option>${values
+    .map((value) => `<option value="${escapeHtml(value)}">${escapeHtml(value)}</option>`)
+    .join("")}`;
+  $(selector).value = values.includes(current) ? current : "";
 }
 
 function renderBars(container, rows) {
@@ -68,11 +96,30 @@ async function loadDashboard() {
     .join("");
 }
 
+async function loadTagFilterOptions() {
+  state.allTags = await api("/api/tags");
+  fillSelect("#tagCategory", uniqueValues(state.allTags, "tag_category_l1"), "全部分类");
+  fillSelect("#tagProduct", uniqueValues(state.allTags, "applicable_product"), "全部产品");
+  fillSelect("#tagRegion", uniqueValues(state.allTags, "applicable_market_region"), "全部区域");
+  fillSelect("#tagStatus", uniqueValues(state.allTags, "tag_status"), "全部状态");
+}
+
 async function loadTags() {
-  const keyword = encodeURIComponent($("#tagKeyword").value.trim());
-  const sensitivity = encodeURIComponent($("#tagSensitivity").value);
-  state.tags = await api(`/api/tags?keyword=${keyword}&sensitivity=${sensitivity}`);
-  $("#tagTable").innerHTML = `
+  clearNotice();
+  const params = new URLSearchParams();
+  [
+    ["keyword", $("#tagKeyword").value.trim()],
+    ["category", $("#tagCategory").value],
+    ["product", $("#tagProduct").value],
+    ["region", $("#tagRegion").value],
+    ["status", $("#tagStatus").value],
+    ["sensitivity", $("#tagSensitivity").value],
+  ].forEach(([key, value]) => {
+    if (value) params.set(key, value);
+  });
+  state.tags = await api(`/api/tags?${params.toString()}`);
+  $("#tagTable").innerHTML = state.tags.length
+    ? `
     <table>
       <thead>
         <tr><th>标签</th><th>分类</th><th>产品/区域</th><th>状态</th><th>敏感</th></tr>
@@ -94,7 +141,8 @@ async function loadTags() {
           .join("")}
       </tbody>
     </table>
-  `;
+  `
+    : emptyState("没有匹配的标签", "调整筛选条件后重试。");
   document.querySelectorAll("[data-tag]").forEach((row) => {
     row.addEventListener("click", () => loadTagDetail(row.dataset.tag));
   });
@@ -201,6 +249,7 @@ async function previewAudience() {
     }),
   });
   state.lastPreview = data;
+  setNotice("人群预估已更新。", data.requires_approval ? "warning" : "success");
   $("#audiencePreview").innerHTML = `
     <strong>预估命中：${data.estimated_user_cnt} / ${data.total_user_cnt}</strong>
     <p>覆盖率：${(data.coverage_rate * 100).toFixed(2)}%</p>
@@ -223,6 +272,7 @@ async function saveAudience() {
       conditions: collectConditions(),
     }),
   });
+  setNotice("人群包已保存，可在导出任务中选择。", data.requires_approval ? "warning" : "success");
   $("#audiencePreview").innerHTML = `已保存人群包：${escapeHtml(data.audience_name)}，预估 ${data.estimated_user_cnt} 人。`;
   await loadAudiences();
   await loadAudit();
@@ -242,7 +292,7 @@ async function loadAudiences() {
           `,
         )
         .join("")
-    : "暂无人群包。";
+    : emptyState("暂无人群包", "先在人群圈选中保存一个常用人群。");
   $("#exportAudience").innerHTML = state.audiences
     .map((audience) => `<option value="${escapeHtml(audience.audience_id)}">${escapeHtml(audience.audience_name)}</option>`)
     .join("");
@@ -250,7 +300,7 @@ async function loadAudiences() {
 
 async function requestExport() {
   if (!$("#exportAudience").value) {
-    alert("请先保存人群包");
+    setNotice("请先保存人群包后再提交导出。", "warning");
     return;
   }
   await api("/api/exports", {
@@ -261,6 +311,7 @@ async function requestExport() {
       business_purpose: $("#exportPurpose").value || "未填写",
     }),
   });
+  setNotice("导出申请已提交。", "success");
   await loadExports();
   await loadAudit();
 }
@@ -280,7 +331,7 @@ async function loadExports() {
           `,
         )
         .join("")
-    : "暂无导出任务。";
+    : emptyState("暂无导出任务", "保存人群包后，可在这里提交 CSV 或 ODPS 导出。");
 }
 
 async function loadQuality() {
@@ -327,7 +378,7 @@ async function loadRequests() {
                 </div>
               `,
             )
-            .join("") || "<p>暂无</p>"}
+            .join("") || emptyState("暂无需求")}
         </div>
       `,
     )
@@ -373,6 +424,12 @@ function setupNavigation() {
 
 function setupEvents() {
   $("#tagSearchBtn").addEventListener("click", loadTags);
+  ["#tagKeyword", "#tagCategory", "#tagProduct", "#tagRegion", "#tagStatus", "#tagSensitivity"].forEach((selector) => {
+    $(selector).addEventListener("change", loadTags);
+  });
+  $("#tagKeyword").addEventListener("keydown", (event) => {
+    if (event.key === "Enter") loadTags();
+  });
   $("#addConditionBtn").addEventListener("click", () => {
     $("#conditionList").insertAdjacentHTML("beforeend", conditionHtml(Date.now()));
     renderConditionRows();
@@ -385,6 +442,7 @@ function setupEvents() {
 async function boot() {
   setupNavigation();
   setupEvents();
+  await loadTagFilterOptions();
   await Promise.all([loadDashboard(), loadTags(), loadTagMap(), loadAudiences(), loadExports(), loadQuality(), loadRequests(), loadAudit()]);
 }
 

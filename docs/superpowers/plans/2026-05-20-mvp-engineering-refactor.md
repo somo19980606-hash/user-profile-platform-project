@@ -2,9 +2,9 @@
 
 > **给 agentic workers：** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**目标：** 在不改变现有页面、API 路径和样例数据语义的前提下，把 MVP 拆成可测试的路由、服务、存储和工具模块。
+**目标：** 在不改变现有 API 路径和样例数据语义的前提下，把 MVP 拆成可测试的路由、服务、存储和工具模块，并优化当前前端的信息组织、筛选能力、空状态和响应式布局。
 
-**架构：** `server.mjs` 只负责组装 HTTP server；`routes/` 处理 HTTP 输入输出；`services/` 承载标签、人群、导出和看板业务；`stores/` 负责 CSV/JSON 文件读写；`utils/` 放纯函数。测试先覆盖纯函数和服务行为，再迁移实现。
+**架构：** `server.mjs` 只负责组装 HTTP server；`routes/` 处理 HTTP 输入输出；`services/` 承载标签、人群、导出和看板业务；`stores/` 负责 CSV/JSON 文件读写；`utils/` 放纯函数。前端保持无构建单页应用，增强筛选控件、工作台式布局和页面内反馈。测试先覆盖纯函数和服务行为，再迁移实现。
 
 **技术栈：** Node.js ESM、内置 `node:test`、内置 `node:assert/strict`、零新增依赖。
 
@@ -134,7 +134,7 @@ Expected: PASS。
 - Create: `mvp/src/utils/id.mjs`
 - Create: `mvp/src/stores/json-store.mjs`
 - Create: `mvp/src/stores/tag-metadata-store.mjs`
-- Modify: `mvp/src/repository.mjs`
+- Delete: `mvp/src/repository.mjs`
 
 - [ ] **Step 1: 写失败测试**
 
@@ -208,9 +208,9 @@ Expected: FAIL，原因是 `services/tag-service.mjs` 尚不存在。
 
 创建 `mvp/src/stores/tag-metadata-store.mjs`，负责读取 `exports/user_tag_metadata_draft_20260514.csv`，调用 `parseCsv`，缓存并返回原始标签行。
 
-- [ ] **Step 6: 暂时保持兼容**
+- [ ] **Step 6: 删除旧聚合模块**
 
-修改 `repository.mjs` 使用新工具和 store，但保留原有导出函数，让 smoke test 继续通过。
+服务和路由迁移完成后删除 `mvp/src/repository.mjs`，确保运行代码不再依赖旧聚合模块。
 
 - [ ] **Step 7: 验证**
 
@@ -228,7 +228,7 @@ Expected: PASS。
 - Create: `mvp/src/services/request-service.mjs`
 - Create: `mvp/src/tests/audience-service.test.mjs`
 - Create: `mvp/src/tests/export-service.test.mjs`
-- Modify: `mvp/src/repository.mjs`
+- Delete: `mvp/src/repository.mjs`
 
 - [ ] **Step 1: 写 audience 失败测试**
 
@@ -350,9 +350,9 @@ Expected: FAIL，原因是 audience/export service 尚未实现。
 
 创建 `dashboard-service.mjs` 和 `request-service.mjs`，保持现有返回结构不变。
 
-- [ ] **Step 8: 让 repository 变为组合层**
+- [ ] **Step 8: 迁移默认服务组合**
 
-`repository.mjs` 暂时只创建默认 store/service，并重新导出现有函数，降低一次性改动风险。
+默认 store/service 组合放到 `routes/api-routes.mjs`，API 路由直接调用服务层，避免保留新的聚合中转文件。
 
 - [ ] **Step 9: 验证**
 
@@ -405,7 +405,82 @@ Run: `npm start`
 
 Expected: 输出 `画像平台 MVP 已启动: http://localhost:8787`。验证后停止进程。
 
-### 任务 5：文档、提交、推送
+### 任务 5：前端工作台布局优化
+
+**Files:**
+- Modify: `mvp/public/index.html`
+- Modify: `mvp/public/styles.css`
+- Modify: `mvp/public/app.js`
+
+- [ ] **Step 1: 补齐筛选 UI**
+
+在标签目录筛选区增加：
+
+- `tagCategory`
+- `tagProduct`
+- `tagRegion`
+- `tagStatus`
+
+保留 `tagKeyword` 和 `tagSensitivity`。`loadTags` 构造查询参数时包含这些字段。
+
+- [ ] **Step 2: 增加加载、错误、空状态辅助函数**
+
+在 `mvp/public/app.js` 增加：
+
+```js
+function emptyState(title, detail = "") {
+  return `<div class="empty-state"><strong>${escapeHtml(title)}</strong>${detail ? `<p>${escapeHtml(detail)}</p>` : ""}</div>`;
+}
+
+function setNotice(message, level = "info") {
+  const notice = $("#notice");
+  notice.textContent = message;
+  notice.className = `notice ${level}`;
+  notice.hidden = false;
+}
+```
+
+页面顶栏下方增加：
+
+```html
+<div id="notice" class="notice" hidden></div>
+```
+
+- [ ] **Step 3: 优化标签目录布局**
+
+把标签目录布局改为 `grid catalog-layout`，左侧标签列表更宽，右侧详情固定为扫描面板。标签列表空结果时显示 `emptyState("没有匹配的标签", "调整筛选条件后重试。")`。
+
+- [ ] **Step 4: 优化人群圈选布局**
+
+把人群圈选拆成：
+
+- 条件编辑卡片
+- 预估与保存卡片
+- 已保存人群卡片
+
+条件行在窄屏下改为单列，按钮不挤压。
+
+- [ ] **Step 5: 优化导出任务反馈**
+
+移除 `alert("请先保存人群包")`，改为 `setNotice("请先保存人群包后再提交导出。", "warning")`。无导出任务时展示空状态和下一步提示。
+
+- [ ] **Step 6: 优化看板和全局视觉**
+
+CSS 调整：
+
+- 卡片圆角改为 8px。
+- 减少大阴影，强化边框。
+- `filters` 支持自动换行。
+- `kanban` 使用 `grid-template-columns: repeat(6, minmax(180px, 1fr))`，窄屏横向滚动。
+- 移动端 sidebar nav 横向滚动。
+
+- [ ] **Step 7: 验证静态 UI 基本加载**
+
+Run: `npm test`
+
+Expected: PASS。
+
+### 任务 6：文档、提交、推送
 
 **Files:**
 - Modify: `mvp/README.md`
@@ -413,7 +488,7 @@ Expected: 输出 `画像平台 MVP 已启动: http://localhost:8787`。验证后
 
 - [ ] **Step 1: 更新文档**
 
-更新 `mvp/README.md` 的工程结构说明，列出 `routes/services/stores/utils/tests`。
+更新 `mvp/README.md` 的工程结构说明，列出 `routes/services/stores/utils/tests`，并补充前端工作台优化范围。
 
 更新 `MANIFEST.md` 的 `mvp/src/` 描述。
 
@@ -422,6 +497,10 @@ Expected: 输出 `画像平台 MVP 已启动: http://localhost:8787`。验证后
 Run: `npm test`
 
 Expected: PASS。
+
+Run: `npm start`
+
+Expected: 输出 `画像平台 MVP 已启动: http://localhost:8787`。浏览器检查桌面和窄屏布局后停止进程。
 
 Run: `git status --short --branch`
 

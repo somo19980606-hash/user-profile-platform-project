@@ -35,6 +35,7 @@
         </div>
         <div class="user-pill">local-demo-user</div>
       </header>
+      <div id="notice" class="notice" hidden></div>
 
       <section id="overview" class="view">
         <div class="section-title">
@@ -61,6 +62,18 @@
         </div>
         <div class="filters">
           <input id="tagKeyword" placeholder="搜索标签名称、编码、来源表" />
+          <select id="tagCategory">
+            <option value="">全部分类</option>
+          </select>
+          <select id="tagProduct">
+            <option value="">全部产品</option>
+          </select>
+          <select id="tagRegion">
+            <option value="">全部区域</option>
+          </select>
+          <select id="tagStatus">
+            <option value="">全部状态</option>
+          </select>
           <select id="tagSensitivity">
             <option value="">全部敏感等级</option>
             <option value="low">普通</option>
@@ -69,7 +82,7 @@
           </select>
           <button id="tagSearchBtn">查询</button>
         </div>
-        <div class="grid two">
+        <div class="grid catalog-layout">
           <article class="card table-card">
             <h3>标签列表</h3>
             <div id="tagTable"></div>
@@ -103,27 +116,33 @@
           <h2>人群圈选</h2>
           <p>组合标签条件，预估人群规模，保存常用人群包。</p>
         </div>
-        <article class="card">
-          <div class="audience-toolbar">
-            <select id="audienceLogic">
-              <option value="AND">AND：全部满足</option>
-              <option value="OR">OR：任一满足</option>
-            </select>
-            <button id="addConditionBtn">添加条件</button>
-            <button id="previewAudienceBtn">预估人群</button>
-          </div>
-          <div id="conditionList" class="condition-list"></div>
-          <div id="audiencePreview" class="preview-box">添加条件后可预估人数。</div>
-          <div class="save-box">
-            <input id="audienceName" placeholder="人群包名称，例如：近30天高活跃会员" />
-            <input id="audiencePurpose" placeholder="业务用途，例如：会员召回活动" />
-            <button id="saveAudienceBtn">保存人群包</button>
-          </div>
-        </article>
-        <article class="card">
-          <h3>人群包管理</h3>
-          <div id="audienceList" class="list"></div>
-        </article>
+        <div class="grid audience-layout">
+          <article class="card">
+            <h3>条件编辑</h3>
+            <div class="audience-toolbar">
+              <select id="audienceLogic">
+                <option value="AND">AND：全部满足</option>
+                <option value="OR">OR：任一满足</option>
+              </select>
+              <button id="addConditionBtn">添加条件</button>
+              <button id="previewAudienceBtn">预估人群</button>
+            </div>
+            <div id="conditionList" class="condition-list"></div>
+          </article>
+          <article class="card">
+            <h3>预估与保存</h3>
+            <div id="audiencePreview" class="preview-box">添加条件后可预估人数。</div>
+            <div class="save-box">
+              <input id="audienceName" placeholder="人群包名称，例如：近30天高活跃会员" />
+              <input id="audiencePurpose" placeholder="业务用途，例如：会员召回活动" />
+              <button id="saveAudienceBtn">保存人群包</button>
+            </div>
+          </article>
+          <article class="card">
+            <h3>已保存人群</h3>
+            <div id="audienceList" class="list"></div>
+          </article>
+        </div>
       </section>
 
       <section id="exports" class="view">
